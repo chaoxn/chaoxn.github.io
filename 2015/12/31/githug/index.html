@@ -1,15 +1,647 @@
-<%- partial('_partial/head') %>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Githug-通关笔记 | 潮汐</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言目前公司使用的是svn，Cornerstone客户端，还是破解版的（逃。。）除了基本的add、commit、解决一下config、打个tag，很少用到别的功能。而我私下比较喜欢使用git。忽然在V2发现了 githug 的通关游戏，一共55关，赶紧开撸。安装  安装很简单1gem install githug 如果权限不够，前面加上sudo。然后cd进一个文件夹，输入githug，会有提示你是">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Githug-通关笔记">
+<meta property="og:url" content="http://chaoxn.com/2015/12/31/githug/index.html">
+<meta property="og:site_name" content="潮汐">
+<meta property="og:description" content="前言目前公司使用的是svn，Cornerstone客户端，还是破解版的（逃。。）除了基本的add、commit、解决一下config、打个tag，很少用到别的功能。而我私下比较喜欢使用git。忽然在V2发现了 githug 的通关游戏，一共55关，赶紧开撸。安装  安装很简单1gem install githug 如果权限不够，前面加上sudo。然后cd进一个文件夹，输入githug，会有提示你是">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://7xnqnj.com1.z0.glb.clouddn.com/git%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202015-12-31%20%E4%B8%8B%E5%8D%883.58.32.png">
+<meta property="og:image" content="http://7xnqnj.com1.z0.glb.clouddn.com/git4.pic_hd.jpg">
+<meta property="og:updated_time" content="2016-01-07T06:40:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Githug-通关笔记">
+<meta name="twitter:description" content="前言目前公司使用的是svn，Cornerstone客户端，还是破解版的（逃。。）除了基本的add、commit、解决一下config、打个tag，很少用到别的功能。而我私下比较喜欢使用git。忽然在V2发现了 githug 的通关游戏，一共55关，赶紧开撸。安装  安装很简单1gem install githug 如果权限不够，前面加上sudo。然后cd进一个文件夹，输入githug，会有提示你是">
+<meta name="twitter:image" content="http://7xnqnj.com1.z0.glb.clouddn.com/git%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202015-12-31%20%E4%B8%8B%E5%8D%883.58.32.png">
+  
+    <link rel="alternative" href="/atom.xml" title="潮汐" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
   <div id="container">
     <div class="left-col">
-    <%- partial('_partial/left-col', null, {cache: !config.relative_link}) %>
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xnqnj.com1.z0.glb.clouddn.com/1.pic.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">潮汐</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">你梦想蓝图的每一个像素，都得你用才华和汗水填补。</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章</a></li>
+				        
+							<li><a href="/instagram">ins</a></li>
+				        
+							<li><a href="/">相册</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/chaoxn" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="/“#”" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="#" title="google">google</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/chaoxn" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iOS10/" style="font-size: 10px;">iOS10</a> <a href="/tags/iOS9/" style="font-size: 15px;">iOS9</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/学习笔记/" style="font-size: 20px;">学习笔记</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我就是我</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
     </div>
     <div class="mid-col">
-      <%- partial('_partial/mobile-nav', null, {cache: !config.relative_link}) %>
-      <div class="body-wrap"><%- body %></div>
-      <%- partial('_partial/footer') %>
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">潮汐</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xnqnj.com1.z0.glb.clouddn.com/1.pic.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">潮汐</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">你梦想蓝图的每一个像素，都得你用才华和汗水填补。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章</a></li>
+		        
+					<li><a href="/instagram">ins</a></li>
+		        
+					<li><a href="/">相册</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/chaoxn" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="/“#”" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="#" title="google">google</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/chaoxn" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-githug" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/31/githug/" class="article-date">
+  	<time datetime="2015-12-31T04:32:25.000Z" itemprop="datePublished">2015-12-31</time>
+</a>
     </div>
-    <%- partial('_partial/after-footer') %>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Githug-通关笔记
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <font color="orangeRed" size="4">前言</font><br>目前公司使用的是svn，Cornerstone客户端，还是破解版的（逃。。）除了基本的add、commit、解决一下config、打个tag，很少用到别的功能。而我私下比较喜欢使用git。忽然在V2发现了 <a href="https://github.com/Gazler/githug" target="_blank" rel="external">githug</a> 的通关游戏，一共55关，赶紧开撸。<br><br><font color="orangeRed" size="4">安装</font>
+
+<p>安装很简单<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem <span class="keyword">install</span> githug</div></pre></td></tr></table></figure></p>
+<p>如果权限不够，前面加上sudo。然后cd进一个文件夹，输入githug，会有提示你是否创建一个游戏目录，选</p>
+<a id="more"></a>
+<p><img src="http://7xnqnj.com1.z0.glb.clouddn.com/git%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202015-12-31%20%E4%B8%8B%E5%8D%883.58.32.png" alt=""></p>
+<p>name是关卡名字，level是第几关，difficulty是难度，最下面是关卡介绍。</p>
+<font color="mediumorchid" size="2">游戏命令</font>
+
+<ul>
+<li>githug play     检查是否过关</li>
+<li>githug hind     当前关卡提示</li>
+<li>githug reset     重启当前关卡或者重启到指定名字的关卡</li>
+<li>githug levels 所有关卡列表</li>
+</ul>
+<font color="orangeRed" size="4">开始闯关</font>
+
+<p>先来一个备忘以备不时之需<br><img src="http://7xnqnj.com1.z0.glb.clouddn.com/git4.pic_hd.jpg" alt=""></p>
+<font color="olive" size="3">TIPS: 每一个关卡都是一个新的repo， 不要想在前一个的文件中找什么</font>
+
+<p><font color="lightslategray" size="3"><strong>1. init<strong></strong></strong></font></p>
+<blockquote>
+<p>A new directory, <code>git_hug</code>, has been created; initialize an empty repository in it.</p>
+</blockquote>
+<p>初始化一个本地仓库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> git_hug</div><div class="line">git init</div></pre></td></tr></table></figure>
+<h4 id="2-config"><a href="#2-config" class="headerlink" title="2. config"></a>2. config</h4><blockquote>
+<p>Set up your git name and email, this is important so that your commits can be identified.</p>
+</blockquote>
+<p>设置名字和邮箱</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git<span class="built_in"> config </span>user.name <span class="string">"yourname"</span></div><div class="line">git<span class="built_in"> config </span>user.email <span class="string">"youremail"</span></div></pre></td></tr></table></figure>
+<h4 id="3-add"><a href="#3-add" class="headerlink" title="3. add"></a>3. add</h4><blockquote>
+<p>here is a file in your folder called README, you should add it to your staging area</p>
+</blockquote>
+<p>你的git_hug文件夹下生成了一个README，把他加到缓存区</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">add</span><span class="bash"> README</span></div></pre></td></tr></table></figure>
+<h4 id="4-commit"><a href="#4-commit" class="headerlink" title="4. commit"></a>4. commit</h4><blockquote>
+<p>The README file has been added to your staging area, now commit it.</p>
+</blockquote>
+<p>已经加入缓存区，现在把它提交</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git</span> commit -m<span class="string">"commit readme"</span></div></pre></td></tr></table></figure>
+<h4 id="5-clone"><a href="#5-clone" class="headerlink" title="5. clone"></a>5. clone</h4><blockquote>
+<p>Clone the repository at <a href="https://github.com/Gazler/cloneme" target="_blank" rel="external">https://github.com/Gazler/cloneme</a>.</p>
+</blockquote>
+<p>克隆一个远程库</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/Gazler/cloneme</div></pre></td></tr></table></figure>
+<h4 id="6-clone-to-folder"><a href="#6-clone-to-folder" class="headerlink" title="6. clone_to_folder"></a>6. clone_to_folder</h4><blockquote>
+<p>Clone the repository at <a href="https://github.com/Gazler/cloneme" target="_blank" rel="external">https://github.com/Gazler/cloneme</a> to my_cloned_repo.</p>
+</blockquote>
+<p>克隆一个远程库到指定文件夹</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/Gazler/cloneme my_cloned_repo</div></pre></td></tr></table></figure>
+<h4 id="7-ignore"><a href="#7-ignore" class="headerlink" title="7. ignore"></a>7. ignore</h4><blockquote>
+<p>The text editor ‘vim’ creates files ending in .swp (swap files) for all files that are currently open.We don’t want them creeping into the repository.Make this repository ignore .swp files.</p>
+</blockquote>
+<p>使用vim编辑，忽略.swp文件。添加.gitignore文件就好了。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">vi</span> <span class="selector-class">.gitignore</span></div><div class="line">然后插入 *<span class="selector-class">.swp</span></div></pre></td></tr></table></figure>
+<p>关于.gitignore的更多用法就不多做介绍了，先闯关！</p>
+<h4 id="8-include"><a href="#8-include" class="headerlink" title="8. include"></a>8. include</h4><blockquote>
+<p>Notice a few files with the ‘.a’ extension.We want git to ignore all but the ‘lib.a’ file.</p>
+</blockquote>
+<p>忽略所有.a，但是不忽略lib.a</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vim .gitignore</div><div class="line">插入 *.a</div><div class="line">!<span class="class"><span class="keyword">lib</span>.<span class="title">a</span></span></div></pre></td></tr></table></figure>
+<h4 id="9-status"><a href="#9-status" class="headerlink" title="9. status"></a>9. status</h4><blockquote>
+<p>There are some files in this repository, one of the files is untracked, which file is it?</p>
+</blockquote>
+<p>有一个文件没有加到缓存区。查看状态即可，找到Untracked files下的文件</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git status</span></div></pre></td></tr></table></figure>
+<h4 id="10-number-of-files-committed"><a href="#10-number-of-files-committed" class="headerlink" title="10. number_of_files_committed"></a>10. number_of_files_committed</h4><blockquote>
+<p>There are some files in this repository, how many of the files will be committed?</p>
+</blockquote>
+<p>看看有哪些文件将要提交，依然查看状态，找到to be commited下面的文件</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git status</span></div></pre></td></tr></table></figure>
+<h4 id="11-rm"><a href="#11-rm" class="headerlink" title="11. rm"></a>11. rm</h4><blockquote>
+<p>A file has been removed from the working tree, however the file was not removed from the repository.  Find out what this file was and remove it.</p>
+</blockquote>
+<p>在目录中删除但是库里没删，找到并删掉它。查看状态找到deleted的文件，然后删除</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">git</span> <span class="selector-tag">status</span></div><div class="line"><span class="selector-tag">git</span> <span class="selector-tag">rm</span> <span class="selector-tag">deleteme</span><span class="selector-class">.rb</span></div></pre></td></tr></table></figure>
+<h4 id="12-rm-cached"><a href="#12-rm-cached" class="headerlink" title="12.rm_cached"></a>12.rm_cached</h4><blockquote>
+<p>A file has accidentally been added to your staging area, find out which file and remove it from the staging area.NOTE Do not remove the file from the file system, only from git.</p>
+</blockquote>
+<p>一个文件被添加到了缓存区，找到并删除它，只能从git删除哦。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">git</span> <span class="selector-tag">status</span></div><div class="line"><span class="selector-tag">git</span> <span class="selector-tag">rm</span> ––<span class="selector-tag">cached</span> <span class="selector-tag">deleteme</span><span class="selector-class">.rb</span></div></pre></td></tr></table></figure>
+<h4 id="13-stash"><a href="#13-stash" class="headerlink" title="13. stash"></a>13. stash</h4><blockquote>
+<p>You’ve made some changes and want to work on them later. You should save them, but don’t commit them.</p>
+</blockquote>
+<p>把你现在做的一些修改暂存起来，不提交</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git stash</span></div></pre></td></tr></table></figure>
+<h4 id="14-rename"><a href="#14-rename" class="headerlink" title="14. rename"></a>14. rename</h4><blockquote>
+<p>We have a file called <code>oldfile.txt</code>. We want to rename it to <code>newfile.txt</code> and stage this change.</p>
+</blockquote>
+<p>改个名</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">git</span> <span class="selector-tag">mv</span> <span class="selector-tag">oldfile</span><span class="selector-class">.txt</span> <span class="selector-tag">newfile</span><span class="selector-class">.txt</span></div></pre></td></tr></table></figure>
+<h4 id="15-restructure"><a href="#15-restructure" class="headerlink" title="15. restructure"></a>15. restructure</h4><blockquote>
+<p>You added some files to your repository, but now realize that your project needs to be restructured.  Make a new folder named <code>src</code> and using Git move all of the .html files into this folder.</p>
+</blockquote>
+<p>把所有.html文件都加入到新建的src文件夹中</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">mkdir</span> src</div><div class="line">git mv <span class="regexp">*.html</span> src/</div></pre></td></tr></table></figure>
+<h4 id="16-log"><a href="#16-log" class="headerlink" title="16. log"></a>16. log</h4><blockquote>
+<p>You will be asked for the hash of most recent commit.  You will need to investigate the logs of the repository for this.</p>
+</blockquote>
+<p>通过日志查看commit历史记录的哈希值。</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">log</span></div></pre></td></tr></table></figure>
+<h4 id="17-tag"><a href="#17-tag" class="headerlink" title="17. tag"></a>17. tag</h4><blockquote>
+<p>We have a git repo and we want to tag the current commit with <code>new_tag</code>.</p>
+</blockquote>
+<p>给这次repo打个标签</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">tag</span> <span class="title">new_tag</span></div></pre></td></tr></table></figure>
+<h4 id="18-push-tags"><a href="#18-push-tags" class="headerlink" title="18. push_tags"></a>18. push_tags</h4><blockquote>
+<p>There are tags in the repository that aren’t pushed into remote repository. Push them now.</p>
+</blockquote>
+<p>把这些tags推到远程库</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push <span class="comment">--tags</span></div></pre></td></tr></table></figure>
+<h4 id="19-commit-amend"><a href="#19-commit-amend" class="headerlink" title="19. commit_amend"></a>19. commit_amend</h4><blockquote>
+<p>The <code>README</code> file has been committed, but it looks like the file <code>forgotten_file.rb</code> was missing from the commit.  Add the file and amend your previous commit to include it.</p>
+</blockquote>
+<p>readme已经提交了，但是有个文件没有提交，在你上一次提交里加上它<br>可以使用 git commit –amend 修改上一次的提交信息，前提是你还没有push。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">add</span><span class="bash"> forgotten_file.rb</span></div><div class="line"><span class="bash">git commit ––amend</span></div></pre></td></tr></table></figure>
+<h4 id="20-commit-in-future"><a href="#20-commit-in-future" class="headerlink" title="20. commit_in_future"></a>20. commit_in_future</h4><blockquote>
+<p>Commit your changes with the future date (e.g. tomorrow).</p>
+</blockquote>
+<p>提交的时候加上未来的一个日期</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit --date=<span class="number">2016.01</span><span class="number">.01</span> -m<span class="string">"add date"</span></div></pre></td></tr></table></figure>
+<h4 id="21-reset"><a href="#21-reset" class="headerlink" title="21. reset"></a>21. reset</h4><blockquote>
+<p>There are two files to be committed.  The goal was to add each file as a separate commit, however both were added by accident.  Unstage the file <code>to_commit_second.rb</code> using the reset command (don’t commit anything).</p>
+</blockquote>
+<p>有两个要被提交的文件，想要分开提交，但是已经把他们一起加入到了缓存区，现在把其中的一个文件撤销出来</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">reset</span> <span class="keyword">HEAD</span> to_commit_second.rb</div></pre></td></tr></table></figure>
+<h4 id="22-reset-soft"><a href="#22-reset-soft" class="headerlink" title="22. reset_soft"></a>22. reset_soft</h4><blockquote>
+<p>You committed too soon. Now you want to undo the last commit, while keeping the index.</p>
+</blockquote>
+<p>提交的太快，现在想要取消最后一次提交。加上 –soft参数可以使撤销的提交仍然在缓存区，不需要再add</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">reset</span> ––soft <span class="keyword">HEAD</span>^</div></pre></td></tr></table></figure>
+<h4 id="23-checkout-file"><a href="#23-checkout-file" class="headerlink" title="23. checkout_file"></a>23. checkout_file</h4><blockquote>
+<p>A file has been modified, but you don’t want to keep the modification.  Checkout the <code>config.rb</code> file from the last commit.</p>
+</blockquote>
+<p>一个文件被修改了，但是你不想要这个更改。从最后一次提交中把这个文件清掉。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout <span class="built_in">config</span>.rb</div></pre></td></tr></table></figure>
+<h4 id="24-remote"><a href="#24-remote" class="headerlink" title="24. remote"></a>24. remote</h4><blockquote>
+<p>This project has a remote repository.Identify it</p>
+</blockquote>
+<p>显示远程仓库名</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git remote</span></div></pre></td></tr></table></figure>
+<h4 id="25-remote-url"><a href="#25-remote-url" class="headerlink" title="25. remote_url"></a>25. remote_url</h4><blockquote>
+<p>The remote repositories have a url associated to them.Please enter the url of remote_location.</p>
+</blockquote>
+<p>显示远程库的url</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git remote -v</span></div></pre></td></tr></table></figure>
+<h4 id="26-pull"><a href="#26-pull" class="headerlink" title="26. pull"></a>26. pull</h4><blockquote>
+<p>You need to pull changes from your origin repository.</p>
+</blockquote>
+<p>把远程库的改动拉取到本地</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull origin <span class="literal">master</span></div></pre></td></tr></table></figure>
+<h4 id="27-remote-add"><a href="#27-remote-add" class="headerlink" title="27. remote_add"></a>27. remote_add</h4><blockquote>
+<p>Add a remote repository called origin with the url <a href="https://github.com/githug/githug" target="_blank" rel="external">https://github.com/githug/githug</a></p>
+</blockquote>
+<p>添加一个远程库</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote <span class="built_in">add</span> origin http<span class="variable">s:</span>//github.<span class="keyword">com</span>/githug/githug</div></pre></td></tr></table></figure>
+<h4 id="28-push"><a href="#28-push" class="headerlink" title="28. push"></a>28. push</h4><blockquote>
+<p>Your local master branch has diverged from the remote origin/master branch. Rebase your commit onto origin/master and push it to remote.</p>
+</blockquote>
+<p>你本地的master分支和远程的master分支都进行了提交然后发生了分叉，合并之后进行推送.<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git rebase  </div><div class="line">git <span class="keyword">push</span></div></pre></td></tr></table></figure></p>
+<h4 id="29-diff"><a href="#29-diff" class="headerlink" title="29. diff"></a>29. diff</h4><blockquote>
+<p>There have been modifications to the app.rb file since your last commit.Find out which line has changed.</p>
+</blockquote>
+<p>上次提交完这个文件后发生了一些改变，找到哪行变了<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git diff</span></div></pre></td></tr></table></figure></p>
+<h4 id="30-blame"><a href="#30-blame" class="headerlink" title="30. blame"></a>30. blame</h4><blockquote>
+<p>Someone has put a password inside the file <code>config.rb</code> find out who it was.</p>
+</blockquote>
+<p>有人在这个文件加了密码，找到这个人</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git</span> blame <span class="string">'config.rb'</span></div></pre></td></tr></table></figure>
+<h4 id="31-branch"><a href="#31-branch" class="headerlink" title="31. branch"></a>31. branch</h4><blockquote>
+<p>You want to work on a piece of code that has the potential to break things, create the branch test_code.</p>
+</blockquote>
+<p>创建一个分支</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">git</span> <span class="keyword">branch </span>test_code</div></pre></td></tr></table></figure>
+<h4 id="32-checkout"><a href="#32-checkout" class="headerlink" title="32. checkout"></a>32. checkout</h4><blockquote>
+<p>Create and switch to a new branch called my_branch.You will need to create a branch like you did in the previous level.</p>
+</blockquote>
+<p>创建并选取一个新的分支</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -<span class="selector-tag">b</span> my_branch</div></pre></td></tr></table></figure>
+<h4 id="33-checkout-tag"><a href="#33-checkout-tag" class="headerlink" title="33. checkout_tag"></a>33. checkout_tag</h4><blockquote>
+<p>You need to fix a bug in the version 1.2 of your app. Checkout the tag v1.2.</p>
+</blockquote>
+<p>切换到指定tag</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">git</span> checkout <span class="built_in">v1</span>.<span class="number">2</span></div></pre></td></tr></table></figure>
+<h4 id="34-checkout-tag-over-branch"><a href="#34-checkout-tag-over-branch" class="headerlink" title="34. checkout_tag_over_branch"></a>34. checkout_tag_over_branch</h4><blockquote>
+<p>You need to fix a bug in the version 1.2 of your app. Checkout the tag v1.2 (Note: There is also a branch named v1.2).</p>
+</blockquote>
+<p>切换到指定tag，注意：有一个分支名和tag名相同</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">git</span> checkout tags/<span class="built_in">v1</span>.<span class="number">2</span></div></pre></td></tr></table></figure>
+<h4 id="35-branch-at"><a href="#35-branch-at" class="headerlink" title="35. branch_at"></a>35. branch_at</h4><blockquote>
+<p>You forgot to branch at the previous commit and made a commit on top of it. Create branch test_branch at the commit before the last.</p>
+</blockquote>
+<p>提交了代码到版本库才记起要在前一个版本创建分支。<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">log</span>  </div><div class="line">git branch test_branch -v eee491beb</div></pre></td></tr></table></figure></p>
+<h4 id="36-delete-branch"><a href="#36-delete-branch" class="headerlink" title="36. delete_branch"></a>36. delete_branch</h4><blockquote>
+<p>You have created too many branches for your project. There is an old branch in your repo called ‘delete_me’, you should delete it.</p>
+</blockquote>
+<p>删除分支</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">git</span> <span class="keyword">branch </span>-d delete_me</div></pre></td></tr></table></figure>
+<h4 id="37-push-branch"><a href="#37-push-branch" class="headerlink" title="37. push_branch"></a>37. push_branch</h4><blockquote>
+<p>You’ve made some changes to a local branch and want to share it, but aren’t yet ready to merge it with the ‘master’ branch.Push only ‘test_branch’ to the remote repository</p>
+</blockquote>
+<p>推送到远程的指定分支</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">push</span> <span class="built_in">origin</span> test_branch</div></pre></td></tr></table></figure>
+<h4 id="38-merge"><a href="#38-merge" class="headerlink" title="38. merge"></a>38. merge</h4><blockquote>
+<p>We have a file in the branch ‘feature’; Let’s merge it to the master branch.</p>
+</blockquote>
+<p>把指定分支合并到主分支，先检查下现在在哪个分支</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">git</span> <span class="keyword">branch </span></div><div class="line"><span class="symbol">git</span> merge feature</div></pre></td></tr></table></figure>
+<h4 id="39-fetch"><a href="#39-fetch" class="headerlink" title="39. fetch"></a>39. fetch</h4><blockquote>
+<p>Looks like a new branch was pushed into our remote repository. Get the changes without merging them with the local repository.</p>
+</blockquote>
+<p>不用merge得到已经提交到远程版本的改变</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git fetch origin</span></div></pre></td></tr></table></figure>
+<h4 id="40-rebase"><a href="#40-rebase" class="headerlink" title="40. rebase"></a>40. rebase</h4><blockquote>
+<p>We are using a git rebase workflow and the feature branch is ready to go into master. Let’s rebase the feature branch onto our master branch.</p>
+</blockquote>
+<p>feature分支已经准备好被合并进master，用rebase把它们合并</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase <span class="keyword">master</span> <span class="title">feature</span></div></pre></td></tr></table></figure>
+<h4 id="41-repack"><a href="#41-repack" class="headerlink" title="41. repack"></a>41. repack</h4><blockquote>
+<p>Optimise how your repository is packaged ensuring that redundant packs are removed.</p>
+</blockquote>
+<p>这道题画个问号，用git repack失败，用git gc成功，但是结果是一样的判定不同。</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git gc</span></div></pre></td></tr></table></figure>
+<h4 id="42-cherry-pick"><a href="#42-cherry-pick" class="headerlink" title="42. cherry-pick"></a>42. cherry-pick</h4><blockquote>
+<p>Your new feature isn’t worth the time and you’re going to delete it. But it has one commit that fills in <code>README</code> file, and you want this commit to be on the master as well.</p>
+</blockquote>
+<p>加入git版本库中存在两个分支,当我们想将其中的某个分支commitID应用到另一个中,我们可以使用git cherry-pick commitID。这里有个<a href="http://think-like-a-git.net/sections/rebase-from-the-ground-up/cherry-picking-explained.html" target="_blank" rel="external">cherry-pick</a>的介绍。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git</span> cherry-pick ca32a6d</div></pre></td></tr></table></figure>
+<h4 id="43-grep"><a href="#43-grep" class="headerlink" title="43. grep"></a>43. grep</h4><blockquote>
+<p>Your project’s deadline approaches, you should evaluate how many TODOs are left in your code</p>
+</blockquote>
+<p>项目期快到了，找到你项目中有多少个TODO</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git grep TODO</span></div></pre></td></tr></table></figure>
+<h4 id="44-rename-commit"><a href="#44-rename-commit" class="headerlink" title="44. rename_commit"></a>44. rename_commit</h4><blockquote>
+<p>Correct the typo in the message of your first (non-root) commit.</p>
+</blockquote>
+<p>重命名第一次提交的信息，找到那次提交之后进行修改</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase -<span class="selector-tag">i</span> HEAD~<span class="number">2</span></div></pre></td></tr></table></figure>
+<h4 id="45-squash-（存疑）"><a href="#45-squash-（存疑）" class="headerlink" title="45. squash （存疑）"></a>45. squash （存疑）</h4><blockquote>
+<p>You have committed several times but would like all those changes to be one commit.</p>
+</blockquote>
+<p>有一些提交是相同的，合并为一个。找到了相同的前三次请求，然后把其中两次squash之后，log显示的也是合并了。不知道为何判定失败</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">git rebase -i HEAD~<span class="number">3</span> </div><div class="line"></div><div class="line"><span class="comment">// 合并了最近的三次。</span></div><div class="line">pick <span class="number">2023</span>bbb Updating README</div><div class="line">squash <span class="number">3e06395</span> Updating README</div><div class="line">squash fbc812d Updating README</div><div class="line"></div><div class="line"><span class="comment">// 原来有五次提交，现在只有三次</span></div><div class="line">commit <span class="number">2</span>ae48a6462c88f5d7edb94fa222cc7cdb9dc1e3e</div><div class="line"><span class="symbol">Author:</span> chaoxn <span class="params">&lt;chaoxn@gmail.com&gt;</span></div><div class="line"><span class="symbol">Date:</span>   Wed Jan <span class="number">6</span> <span class="number">16</span>:<span class="number">52</span>:<span class="number">26</span> <span class="number">2016</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    Updating README</div><div class="line"></div><div class="line">commit <span class="number">47</span>ecb3e5756c98b0d321eb45da7f80a207c89e94</div><div class="line"><span class="symbol">Author:</span> chaoxn <span class="params">&lt;chaoxn@gmail.com&gt;</span></div><div class="line"><span class="symbol">Date:</span>   Wed Jan <span class="number">6</span> <span class="number">16</span>:<span class="number">52</span>:<span class="number">26</span> <span class="number">2016</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    Adding README</div><div class="line"></div><div class="line">commit <span class="number">2</span>c5300e327692e5c991ba5392b22660fedc81a6d</div><div class="line"><span class="symbol">Author:</span> chaoxn <span class="params">&lt;chaoxn@gmail.com&gt;</span></div><div class="line"><span class="symbol">Date:</span>   Wed Jan <span class="number">6</span> <span class="number">16</span>:<span class="number">52</span>:<span class="number">26</span> <span class="number">2016</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    Initial Commit</div></pre></td></tr></table></figure>
+<h4 id="46-merge-squash"><a href="#46-merge-squash" class="headerlink" title="46. merge_squash"></a>46. merge_squash</h4><blockquote>
+<p>Merge all commits from the long-feature-branch as a single commit.</p>
+</blockquote>
+<p>合并分支时，把分支的多次提交合并成一次提交</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git merge --squash<span class="built_in"> long-feature-branch </span></div><div class="line">git commit -m<span class="string">"merge_squash"</span></div></pre></td></tr></table></figure>
+<h4 id="47-reorder"><a href="#47-reorder" class="headerlink" title="47. reorder"></a>47. reorder</h4><blockquote>
+<p>You have committed several times but in the wrong order. Please reorder your commits.</p>
+</blockquote>
+<p>提交顺序错了，重新提交。 把第二次和第三次交换一下顺序。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase -<span class="selector-tag">i</span> HEAD~<span class="number">3</span></div></pre></td></tr></table></figure>
+<h4 id="48-bisect"><a href="#48-bisect" class="headerlink" title="48. bisect"></a>48. bisect</h4><blockquote>
+<p>A bug was introduced somewhere along the way.You know that running ruby prog.rb 5 should output 15.You can also run make test.What are the first 7 chars of the hash of the commit that introduced the bug.</p>
+</blockquote>
+<p>有一次提交有bug，通过运行 ruby prog.rb 5 查看输出是否是15来找出这个bug提交。通过git bisect来一次次的试。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">fizz<span class="meta">@fizzdeMacBook</span>-<span class="string">Pro:</span><span class="regexp">~/Githug/</span>git_hug</div><div class="line">&gt; git bisect start                                                                 master [<span class="number">12628</span>f4]</div><div class="line"></div><div class="line">fizz<span class="meta">@fizzdeMacBook</span>-<span class="string">Pro:</span><span class="regexp">~/Githug/</span>git_hug</div><div class="line">&gt; git bisect good f608824                                                          master [<span class="number">12628</span>f4]</div><div class="line"></div><div class="line">fizz<span class="meta">@fizzdeMacBook</span>-<span class="string">Pro:</span><span class="regexp">~/Githug/</span>git_hug</div><div class="line">&gt; git bisect bad master                                                            master [<span class="number">12628</span>f4]</div><div class="line"><span class="string">Bisecting:</span> <span class="number">9</span> revisions left to test after <span class="keyword">this</span> (roughly <span class="number">3</span> steps)</div><div class="line">[fdbfc0d403e5ac0b2659cbfa2cbb061fcca0dc2a] Another Commit</div><div class="line"></div><div class="line">fizz<span class="meta">@fizzdeMacBook</span>-<span class="string">Pro:</span><span class="regexp">~/Githug/</span>git_hug</div><div class="line">&gt; ruby prog.rb <span class="number">5</span>                                                                  fdbfc0d [fdbfc0d]</div><div class="line"><span class="number">15</span></div><div class="line"></div><div class="line">fizz<span class="meta">@fizzdeMacBook</span>-<span class="string">Pro:</span><span class="regexp">~/Githug/</span>git_hug</div><div class="line">&gt; git bisect good  <span class="comment">// // 在这里根据返回结果来判断下一步是good还是bad，如果是good会自动跳到下一次提交                                                            fdbfc0d [fdbfc0d]</span></div><div class="line"><span class="string">Bisecting:</span> <span class="number">4</span> revisions left to test after <span class="keyword">this</span> (roughly <span class="number">2</span> steps)</div><div class="line">[<span class="number">18</span>ed2ac1522a014412d4303ce7c8db39becab076] Another Commit</div><div class="line"></div><div class="line">fizz<span class="meta">@fizzdeMacBook</span>-<span class="string">Pro:</span><span class="regexp">~/Githug/</span>git_hug</div><div class="line">&gt; ruby prog.rb <span class="number">5</span>                                                                  <span class="number">18</span>ed2ac [<span class="number">18</span>ed2ac</div><div class="line"><span class="number">11</span>  <span class="comment">//这次提交是有bud的</span></div></pre></td></tr></table></figure>
+<h4 id="49-stage-lines"><a href="#49-stage-lines" class="headerlink" title="49. stage_lines"></a>49. stage_lines</h4><blockquote>
+<p>You’ve made changes within a single file that belong to two different features, but neither of the changes are yet staged. Stage only the changes belonging to the first feature.</p>
+</blockquote>
+<p>更改了一个文件中属于两个功能的东西，但是都还没有加入的缓存区。add只属于第一个功能的更改.</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add -<span class="selector-tag">p</span> <span class="comment">//进去之后把属于第二个feature的改动删掉。</span></div></pre></td></tr></table></figure>
+<p>注：交互式add（或者叫add块），将会一个块一个快的循环你的改动。使用命令git add -p时，你可以在每个改动“块”（即：连续的改动会被组织到一起）时进行一些选择，比如：切分当前块为更小的块、跳过一个改动块、甚至手动的编辑该块，你可以敲入?来查看所有该命令提供的选项。 </p>
+<h4 id="50-find-old-branch"><a href="#50-find-old-branch" class="headerlink" title="50. find_old_branch"></a>50. find_old_branch</h4><blockquote>
+<p>You have been working on a branch but got distracted by a major issue and forgot the name of it. Switch back to that branch.</p>
+</blockquote>
+<p>在一个新的分支干活，想起上个分支有些问题，但是你还忘了上个分支的名字。通过reflog查看所有分支记录，然后找到上次切换的那个改动，找到分支名。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git</span> reflog</div><div class="line">git checkout solve_world_hunger</div></pre></td></tr></table></figure>
+<h4 id="51-revert"><a href="#51-revert" class="headerlink" title="51. revert"></a>51. revert</h4><blockquote>
+<p>You have committed several times but want to undo the middle commit.<br>All commits have been pushed, so you can’t change existing history.</p>
+</blockquote>
+<p>已经提交了好几次，但是不想要中间那次了，所有的提交都push了，所以你不能改变已经存在的历史。同样，reflog找到，然后revert。</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git reflog</div><div class="line">git revert df<span class="number">2</span><span class="keyword">c</span><span class="number">0</span><span class="keyword">c</span><span class="number">6</span></div></pre></td></tr></table></figure>
+<p>git revert 是撤销某次操作，此次操作之前的commit都会被保留<br>git reset 是撤销某次提交，但是此次之后的修改都会被退回到暂存区</p>
+<h4 id="52-restore"><a href="#52-restore" class="headerlink" title="52. restore"></a>52. restore</h4><blockquote>
+<p>You decided to delete your latest commit by running <code>git reset --hard HEAD^</code>.  (Not a smart thing to do.)  You then change your mind, and want that commit back.  Restore the deleted commit.</p>
+</blockquote>
+<p>把最后一次提交撤销了之后现在后悔了</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git</span> reflog  </div><div class="line">git checkout b6a7d40</div></pre></td></tr></table></figure>
+<h4 id="53-conflict"><a href="#53-conflict" class="headerlink" title="53. conflict"></a>53. conflict</h4><blockquote>
+<p>You need to merge mybranch into the current branch (master). But there may be some incorrect changes in mybranch which may cause conflicts. Solve any merge-conflicts you come across and finish the merge.</p>
+</blockquote>
+<p>合并分支的时候有冲突，解决冲突。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git branch</div><div class="line">git <span class="keyword">merge</span> mybranch</div><div class="line">git <span class="keyword">status</span></div><div class="line">vim poem.txt</div><div class="line">git <span class="keyword">add</span> poem.txt</div><div class="line">git <span class="keyword">commit</span></div></pre></td></tr></table></figure>
+<h4 id="54-submodule"><a href="#54-submodule" class="headerlink" title="54. submodule"></a>54. submodule</h4><blockquote>
+<p>You want to include the files from the following repo: <code>https://github.com/jackmaney/githug-include-me</code> into a the folder <code>./githug-include-me</code>. Do this without cloning the repo or copying the files from the repo into this repo.</p>
+</blockquote>
+<p>从远程把一个项目整到本地某个文件夹中，不要clone或者copy。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git submodule <span class="built_in">add</span> http<span class="variable">s:</span>//github.<span class="keyword">com</span>/jackmaney/githug-include-<span class="keyword">me</span> ./githug-include-<span class="keyword">me</span></div></pre></td></tr></table></figure>
+<p>注：git Submodule 是一个很好的项目协作工具，他允许类库项目做为repository,子项目做为一个单独的git项目存在父项目中，子项目可以有自己的独立的commit，push，pull。而父项目以Submodule的形式包含子项目，父项目可以指定子项目header，父项目中会提交 Submodule的信息，在clone父项目的时候可以把Submodule初始化。</p>
+<h4 id="55-contribute"><a href="#55-contribute" class="headerlink" title="55. contribute"></a>55. contribute</h4><p>This is the final level, the goal is to contribute to this repository by making a pull request on Github.  Please note that this level is designed to encourage you to add a valid contribution to Githug, not testing your ability to create a pull request.  Contributions that are likely to be accepted are levels, bug fixes and improved documentation.</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nothing <span class="keyword">to</span> <span class="built_in">say</span></div></pre></td></tr></table></figure>
+<hr>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/21/xcode-breakpoint-method-return-value/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          通过断点和Xcode的调试器检查返回值
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/14/Method-Swizzing-Aspects/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">黑科技 - Method Swizzling 与 Aspects</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="githug" data-title="Githug-通关笔记" data-url="http://chaoxn.com/2015/12/31/githug/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"chaoxn"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 潮汐
+    	</div>
+<span id="busuanzi_container_site_pv">
+    您是第<span id="busuanzi_value_site_pv"></span>位访客
+</span>
+      	<div class="footer-right">
+      		<a>ChaoX</a>
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
   </div>
 </body>
 </html>

@@ -1,15 +1,393 @@
-<%- partial('_partial/head') %>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>iOS9系列之-3D-touch | 潮汐</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="什么是3D Touch    iPhone 6s 推出了一种可以让你与手机进行互动的全新方式。这一次，iPhone 能够感应你按压屏幕的力度。除了轻点、轻扫、双指开合这些熟悉的 Multi‑Touch 手势之外，3D Touch 还带来 Peek 和 Pop，为 iPhone 的使用体验开拓出全新的维度。而且，当你使用 3D Touch 时，iPhone 将回以轻微的触感，让你不仅能够看到按下屏幕">
+<meta name="keywords" content="iOS9">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS9系列之-3D-touch">
+<meta property="og:url" content="http://chaoxn.com/2016/02/24/3D-touch/index.html">
+<meta property="og:site_name" content="潮汐">
+<meta property="og:description" content="什么是3D Touch    iPhone 6s 推出了一种可以让你与手机进行互动的全新方式。这一次，iPhone 能够感应你按压屏幕的力度。除了轻点、轻扫、双指开合这些熟悉的 Multi‑Touch 手势之外，3D Touch 还带来 Peek 和 Pop，为 iPhone 的使用体验开拓出全新的维度。而且，当你使用 3D Touch 时，iPhone 将回以轻微的触感，让你不仅能够看到按下屏幕">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://7xnqnj.com1.z0.glb.clouddn.com/3d33.jpg?imageView/2/w/270/q/90">
+<meta property="og:image" content="http://7xnqnj.com1.z0.glb.clouddn.com/3d22.jpg?imageView/2/w/270/q/90">
+<meta property="og:image" content="http://7xnqnj.com1.z0.glb.clouddn.com/3d44.png">
+<meta property="og:updated_time" content="2016-02-25T06:40:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS9系列之-3D-touch">
+<meta name="twitter:description" content="什么是3D Touch    iPhone 6s 推出了一种可以让你与手机进行互动的全新方式。这一次，iPhone 能够感应你按压屏幕的力度。除了轻点、轻扫、双指开合这些熟悉的 Multi‑Touch 手势之外，3D Touch 还带来 Peek 和 Pop，为 iPhone 的使用体验开拓出全新的维度。而且，当你使用 3D Touch 时，iPhone 将回以轻微的触感，让你不仅能够看到按下屏幕">
+<meta name="twitter:image" content="http://7xnqnj.com1.z0.glb.clouddn.com/3d33.jpg?imageView/2/w/270/q/90">
+  
+    <link rel="alternative" href="/atom.xml" title="潮汐" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
   <div id="container">
     <div class="left-col">
-    <%- partial('_partial/left-col', null, {cache: !config.relative_link}) %>
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xnqnj.com1.z0.glb.clouddn.com/1.pic.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">潮汐</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">你梦想蓝图的每一个像素，都得你用才华和汗水填补。</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章</a></li>
+				        
+							<li><a href="/instagram">ins</a></li>
+				        
+							<li><a href="/">相册</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/chaoxn" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="/“#”" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="#" title="google">google</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/chaoxn" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iOS10/" style="font-size: 10px;">iOS10</a> <a href="/tags/iOS9/" style="font-size: 15px;">iOS9</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/学习笔记/" style="font-size: 20px;">学习笔记</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我就是我</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
     </div>
     <div class="mid-col">
-      <%- partial('_partial/mobile-nav', null, {cache: !config.relative_link}) %>
-      <div class="body-wrap"><%- body %></div>
-      <%- partial('_partial/footer') %>
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">潮汐</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xnqnj.com1.z0.glb.clouddn.com/1.pic.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">潮汐</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">你梦想蓝图的每一个像素，都得你用才华和汗水填补。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章</a></li>
+		        
+					<li><a href="/instagram">ins</a></li>
+		        
+					<li><a href="/">相册</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/chaoxn" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="/“#”" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="#" title="google">google</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/chaoxn" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-3D-touch" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/24/3D-touch/" class="article-date">
+  	<time datetime="2016-02-24T07:51:29.000Z" itemprop="datePublished">2016-02-24</time>
+</a>
     </div>
-    <%- partial('_partial/after-footer') %>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS9系列之-3D-touch
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS9/">iOS9</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <font color="indigo" size="4">什么是3D Touch</font>
+
+<hr>
+<blockquote>
+<p>iPhone 6s 推出了一种可以让你与手机进行互动的全新方式。这一次，iPhone 能够感应你按压屏幕的力度。除了轻点、轻扫、双指开合这些熟悉的 Multi‑Touch 手势之外，3D Touch 还带来 Peek 和 Pop，为 iPhone 的使用体验开拓出全新的维度。而且，当你使用 3D Touch 时，iPhone 将回以轻微的触感，让你不仅能够看到按下屏幕的操作效果，还能感觉得到。</p>
+</blockquote>
+<p>这是苹果官网的官话，用我自己的意思理解就是，通过按压屏幕的的力度来进行不同的交互。</p>
+<a id="more"></a>
+<p></p><p><font color="indigo" size="4">3D Touch的几种功能形态</font></p>
+<hr>
+<ol>
+<li>Home Screen Quick Actions<br>通过应用的icon图标，使用3D touch进行重按，会呼出一个快捷菜单。通过这个菜单可以快速定位到应用中的某个界面。这是在我自己应用上写的一个小demo。<br><img src="http://7xnqnj.com1.z0.glb.clouddn.com/3d33.jpg?imageView/2/w/270/q/90" alt=""></li>
+<li><p>peek and pop<br>如果对应用内的某个视图进行按压。开始除了这个视图之外会变模糊，然后继续按压，可以弹出一个完整的视图。可以对这个视图进行上拉然后进行进一步交互<br><img src="http://7xnqnj.com1.z0.glb.clouddn.com/3d22.jpg?imageView/2/w/270/q/90" alt=""></p>
+</li>
+<li><p>UITouch force properties<br>基于力度的交互，还没有深入了解。</p>
+</li>
+</ol>
+<p>更多详细的介绍可以看<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/3DTouch.html" target="_blank" rel="external">官网文档</a></p>
+<p></p><p><font color="indigo" size="4">模拟器使用3D touch</font></p>
+<hr>
+<p>关于没有6s/6sp，又想在模拟器使用3d-touch的情况。已经有人开发出了相应的解决程序<a href="https://github.com/DeskConnect/SBShortcutMenuSimulator" target="_blank" rel="external">SBShortcutMenuSimulator</a>。具体的安装方法在github里面已经很清楚了</p>
+<p></p><p><font color="indigo" size="4">创建与使用</font></p>
+<hr>
+<ol>
+<li><strong>Home Screen Quick Actions</strong><br>通过home弹出来的那些小按钮叫做<strong>UIApplicationShortcutItem</strong>。创建方式有两种：</li>
+</ol>
+<ul>
+<li>动态创建<br>通过代码来创建</li>
+</ul>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">   <span class="comment">// 通过初始化方法创建一个item</span></div><div class="line">- (<span class="keyword">instancetype</span>)initWithType:(<span class="built_in">NSString</span> *)type localizedTitle:(<span class="built_in">NSString</span> *)localizedTitle localizedSubtitle:(<span class="keyword">nullable</span> <span class="built_in">NSString</span> *)localizedSubtitle icon:(<span class="keyword">nullable</span> <span class="built_in">UIApplicationShortcutIcon</span> *)icon userInfo:(<span class="keyword">nullable</span> <span class="built_in">NSDictionary</span> *)userInfo <span class="built_in">NS_DESIGNATED_INITIALIZER</span>;</div><div class="line"><span class="comment">// 上面方法中的icon也有初始化方法</span></div><div class="line">   <span class="comment">// 用系统的图标</span></div><div class="line">+ (<span class="keyword">instancetype</span>)iconWithType:(<span class="built_in">UIApplicationShortcutIconType</span>)type;</div><div class="line"><span class="comment">// 自定义图标</span></div><div class="line">+ (<span class="keyword">instancetype</span>)iconWithTemplateImageName:(<span class="built_in">NSString</span> *)templateImageName;</div><div class="line">   <span class="comment">// 最后将创建的标签添加进Application的shortcutItems中。</span></div><div class="line">   [<span class="built_in">UIApplication</span> sharedApplication].shortcutItems = @[item];</div></pre></td></tr></table></figure>
+<ul>
+<li>静态创建<br>通过plist文件来创建，需要的填的2个键值。可以通过这两个键值来判断点击了哪个来进行响应。<br>UIApplicationShortcutItemType  快捷通道类型的字符串<br>UIApplicationShortcutItemTitle  这个键值设置标签的标题<br>  <p>选填项：<br>UIApplicationShortcutItemSubtitle  设置标签的副标题<br>UIApplicationShortcutItemIconType  设置标签icon类型<br>UIApplicationShortcutItemIconFile   设置标签的icon文件<br>UIApplicationShortcutItemUserInfo  设置信息字典<br><img src="http://7xnqnj.com1.z0.glb.clouddn.com/3d44.png" alt=""><br>这样就可以显示为最开始我展示的样子，但是点击的话还需要添加响应事件。通过下面这个方法的<strong>shortcutItem</strong>的<strong>localizedTitle</strong>或者<strong>type</strong>，也就是上面必填的那两个键值可以区分点的是哪个标签。然后执行相应的跳转事件。</p></li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)<span class="string">application:</span>(UIApplication *)application <span class="string">performActionForShortcutItem:</span>(UIApplicationShortcutItem *)shortcutItem <span class="string">completionHandler:</span>(<span class="keyword">void</span> (^)(BOOL))completionHandler</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>([shortcutItem.localizedTitle <span class="string">isEqualToString:</span>@<span class="string">"读诗"</span>])&#123;</div><div class="line">    </div><div class="line">        PoeViewController *poeVC = [[PoeViewController alloc]init];</div><div class="line">        UINavigationController *navi = [[UINavigationController alloc]<span class="string">initWithRootViewController:</span>poeVC];</div><div class="line">        [self.window.rootViewController <span class="string">presentViewController:</span>navi <span class="string">animated:</span>YES <span class="string">completion:</span>nil];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2.<strong>peek and pop</strong><br>首先要通过<strong>forceTouchCapability</strong>检测设备是否可以支持，如果支持的话就注册。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="keyword">self</span>.traitCollection.forceTouchCapability == <span class="built_in">UIForceTouchCapabilityAvailable</span>) &#123;</div><div class="line">     <span class="comment">// sourceView 要pop的view</span></div><div class="line">     [<span class="keyword">self</span> registerForPreviewingWithDelegate:(<span class="keyword">id</span>)<span class="keyword">self</span> sourceView:<span class="keyword">self</span>.tableView];</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>然后实现Preview的delegate</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">UIViewController</span> *)previewingContext:(<span class="keyword">id</span>&lt;<span class="built_in">UIViewControllerPreviewing</span>&gt;)context viewControllerForLocation:(<span class="built_in">CGPoint</span>)point &#123;</div><div class="line">    <span class="comment">//防止重复加入</span></div><div class="line">    <span class="keyword">if</span> ([<span class="keyword">self</span>.presentedViewController isKindOfClass:[ListenViewController <span class="keyword">class</span>]])&#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">nil</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">        ListenViewController *peekViewController = [[ListenViewController alloc] init];</div><div class="line">        <span class="keyword">return</span> peekViewController;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">- (<span class="keyword">void</span>)previewingContext:(<span class="keyword">id</span>&lt;<span class="built_in">UIViewControllerPreviewing</span>&gt;)previewingContext commitViewController:(<span class="built_in">UIViewController</span> *)viewControllerToCommit &#123;</div><div class="line"></div><div class="line">    [<span class="keyword">self</span> showViewController:viewControllerToCommit sender:<span class="keyword">self</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后如果上拉之后要进行进一步交互的话。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">NSArray</span>&lt;<span class="keyword">id</span>&lt;<span class="built_in">UIPreviewActionItem</span>&gt;&gt; *)previewActionItems &#123;</div><div class="line">    </div><div class="line">    <span class="comment">// 生成UIPreviewAction</span></div><div class="line">    <span class="built_in">UIPreviewAction</span> *action1 = [<span class="built_in">UIPreviewAction</span> actionWithTitle:<span class="string">@"Action 1"</span> style:<span class="built_in">UIPreviewActionStyleDefault</span> handler:^(<span class="built_in">UIPreviewAction</span> * _Nonnull action, <span class="built_in">UIViewController</span> * _Nonnull previewViewController) &#123;</div><div class="line"></div><div class="line">    &#125;];</div><div class="line">    </div><div class="line">    <span class="built_in">UIPreviewAction</span> *action2 = [<span class="built_in">UIPreviewAction</span> actionWithTitle:<span class="string">@"Action 2"</span> style:<span class="built_in">UIPreviewActionStyleDefault</span> handler:^(<span class="built_in">UIPreviewAction</span> * _Nonnull action, <span class="built_in">UIViewController</span> * _Nonnull previewViewController) &#123;</div><div class="line"></div><div class="line">    &#125;];</div><div class="line">    </div><div class="line">    <span class="built_in">UIPreviewAction</span> *action3 = [<span class="built_in">UIPreviewAction</span> actionWithTitle:<span class="string">@"Action 3"</span> style:<span class="built_in">UIPreviewActionStyleDefault</span> handler:^(<span class="built_in">UIPreviewAction</span> * _Nonnull action, <span class="built_in">UIViewController</span> * _Nonnull previewViewController) &#123;</div><div class="line"></div><div class="line">    &#125;];</div><div class="line">    </div><div class="line">    <span class="comment">//添加到到UIPreviewActionGroup中</span></div><div class="line">    <span class="built_in">NSArray</span> *actions = @[action1, action2, action3];</div><div class="line">  </div><div class="line">    <span class="keyword">return</span> actions;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/02/28/UIStackView/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          iOS9系列之-UIStackView
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/21/xcode-breakpoint-method-return-value/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">通过断点和Xcode的调试器检查返回值</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="3D-touch" data-title="iOS9系列之-3D-touch" data-url="http://chaoxn.com/2016/02/24/3D-touch/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"chaoxn"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 潮汐
+    	</div>
+<span id="busuanzi_container_site_pv">
+    您是第<span id="busuanzi_value_site_pv"></span>位访客
+</span>
+      	<div class="footer-right">
+      		<a>ChaoX</a>
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
   </div>
 </body>
 </html>

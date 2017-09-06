@@ -112,7 +112,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iOS10/" style="font-size: 10px;">iOS10</a> <a href="/tags/iOS9/" style="font-size: 15px;">iOS9</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/学习笔记/" style="font-size: 20px;">学习笔记</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+						<a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iCoud/" style="font-size: 10px;">iCoud</a> <a href="/tags/iOS10/" style="font-size: 10px;">iOS10</a> <a href="/tags/iOS9/" style="font-size: 15px;">iOS9</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/学习笔记/" style="font-size: 20px;">学习笔记</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
 					</div>
 				</section>
 				
@@ -179,6 +179,65 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-icloud" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/09/06/icloud/" class="article-date">
+  	<time datetime="2017-09-06T05:36:59.000Z" itemprop="datePublished">2017-09-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/06/icloud/">利用UIDocumentPickerViewController从手机上传文件到app</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>  有时候会有这么一些需求,需要用户上传自己的一些xml,doc,pdf文档.可是iOS上并没有直观的文件管理系统.这时候Document Picker就可以帮助我们访问iCould,dropBox等应用中的文件.然后进行相关操作.</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>首先应该在项目中添加对iCould的支持, 在TARGETS-Capabilities中把iCloud的按钮打开,勾选iCloud Documents.</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iCoud/">iCoud</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2017/09/06/icloud/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="pos-迁移测试" class="article article-type-pos" itemscope itemprop="blogPost">
   
@@ -710,71 +769,6 @@
       
         <p class="article-more-link">
           <a  href="/2015/12/14/Method-Swizzing-Aspects/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-ReactiveCocoa与MVVM" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/12/ReactiveCocoa与MVVM/" class="article-date">
-  	<time datetime="2015-11-12T08:39:54.000Z" itemprop="datePublished">2015-11-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/12/ReactiveCocoa与MVVM/">ReactiveCocoa学习总结</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><p></p>
-<font color="orangeRed" size="4">初衷</font>
-
-<p>最近刚开发完一款公司的ipad应用，有两个界面的网络请求都达到了十个以上，在控件的创建约束都是由xib来完成的情况下，试图控制器中的代码都达到了1400多行。业务逻辑处理非常混乱，数据和视图之间高度偶耦合。虽然所有功能需求都能实现，但代码的可读性非常差，以后的迭代肯定也非常麻烦。所以趁不忙的时候打算着手研究一下MVVM与ReactiveCocoa。这篇博客会一直记录最近的所学。</p>
-<p></p><p></p>
-<font color="orangeRed" size="4">基本理解</font>
-
-<p>看了两天的各种博客和<a href="https://github.com/ReactiveCocoa/ReactiveCocoa" target="_blank" rel="external">官方介绍</a>也只是对其有了一个大概的了解：它是一个iOS开发中常用的各种delegate，KVO，通知 action，netReuquest的集合。说白了也就是有了RAC那些你都不需要了。RAC主要的思想是函数式编程和响应式编程。</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/11/12/ReactiveCocoa与MVVM/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

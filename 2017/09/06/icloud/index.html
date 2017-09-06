@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>前言 | 潮汐</title>
+  <title>利用UIDocumentPickerViewController从手机上传文件到app | 潮汐</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于博客           之前在利用wordpress搭建的博客零零散散写过几篇, 但是没有怎么用心维护,之后看到hexo的静态页面十分简洁,而且搭建方法也比较简单.所以今天就搭建了一个, 记录工作中遇到的问题与一些知识的研究.">
-<meta name="keywords" content="随笔">
+  <meta name="description" content="有时候会有这么一些需求,需要用户上传自己的一些xml,doc,pdf文档.可是iOS上并没有直观的文件管理系统.这时候Document Picker就可以帮助我们访问iCould,dropBox等应用中的文件.然后进行相关操作. 使用首先应该在项目中添加对iCould的支持, 在TARGETS-Capabilities中把iCloud的按钮打开,勾选iCloud Documents.">
+<meta name="keywords" content="iCoud">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前言">
-<meta property="og:url" content="http://chaoxn.com/2015/06/21/first-post/index.html">
+<meta property="og:title" content="利用UIDocumentPickerViewController从手机上传文件到app">
+<meta property="og:url" content="http://chaoxn.com/2017/09/06/icloud/index.html">
 <meta property="og:site_name" content="潮汐">
-<meta property="og:description" content="关于博客           之前在利用wordpress搭建的博客零零散散写过几篇, 但是没有怎么用心维护,之后看到hexo的静态页面十分简洁,而且搭建方法也比较简单.所以今天就搭建了一个, 记录工作中遇到的问题与一些知识的研究.">
+<meta property="og:description" content="有时候会有这么一些需求,需要用户上传自己的一些xml,doc,pdf文档.可是iOS上并没有直观的文件管理系统.这时候Document Picker就可以帮助我们访问iCould,dropBox等应用中的文件.然后进行相关操作. 使用首先应该在项目中添加对iCould的支持, 在TARGETS-Capabilities中把iCloud的按钮打开,勾选iCloud Documents.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2015-11-14T02:24:29.000Z">
+<meta property="og:updated_time" content="2017-09-06T06:41:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前言">
-<meta name="twitter:description" content="关于博客           之前在利用wordpress搭建的博客零零散散写过几篇, 但是没有怎么用心维护,之后看到hexo的静态页面十分简洁,而且搭建方法也比较简单.所以今天就搭建了一个, 记录工作中遇到的问题与一些知识的研究.">
+<meta name="twitter:title" content="利用UIDocumentPickerViewController从手机上传文件到app">
+<meta name="twitter:description" content="有时候会有这么一些需求,需要用户上传自己的一些xml,doc,pdf文档.可是iOS上并没有直观的文件管理系统.这时候Document Picker就可以帮助我们访问iCould,dropBox等应用中的文件.然后进行相关操作. 使用首先应该在项目中添加对iCould的支持, 在TARGETS-Capabilities中把iCloud的按钮打开,勾选iCloud Documents.">
   
     <link rel="alternative" href="/atom.xml" title="潮汐" type="application/atom+xml">
   
@@ -180,11 +180,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-first-post" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-icloud" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/06/21/first-post/" class="article-date">
-  	<time datetime="2015-06-21T07:48:37.000Z" itemprop="datePublished">2015-06-21</time>
+      <a href="/2017/09/06/icloud/" class="article-date">
+  	<time datetime="2017-09-06T05:36:59.000Z" itemprop="datePublished">2017-09-06</time>
 </a>
     </div>
   
@@ -197,7 +197,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      前言
+      利用UIDocumentPickerViewController从手机上传文件到app
     </h1>
   
 
@@ -206,7 +206,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iCoud/">iCoud</a></li></ul>
 	</div>
 
         
@@ -217,11 +217,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="关于博客"><a href="#关于博客" class="headerlink" title="关于博客"></a>关于博客</h4><p></p><p><br>           之前在利用<strong>wordpress</strong>搭建的博客零零散散写过几篇, 但是没有怎么用心维护,之后看到hexo的静态页面十分简洁,而且搭建方法也比较简单.所以今天就搭建了一个, 记录工作中遇到的问题与一些知识的研究.</p>
-<p>
+        <p>  有时候会有这么一些需求,需要用户上传自己的一些xml,doc,pdf文档.可是iOS上并没有直观的文件管理系统.这时候Document Picker就可以帮助我们访问iCould,dropBox等应用中的文件.然后进行相关操作.</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>首先应该在项目中添加对iCould的支持, 在TARGETS-Capabilities中把iCloud的按钮打开,勾选iCloud Documents.</p>
+<a id="more"></a>
+<p>然后开始初始化一个Document Picker,并且声明所支持文件的类型.然后就会弹出一个iCloud Drive的文档选择器.这个选择器需要我们在手机上登录自己的iCloud的账号,然后我们就可以选择在iCloud中存放的文件.</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSArray</span> *documentTypes = @[<span class="string">@"public.content"</span>, <span class="string">@"public.text"</span>, <span class="string">@"public.source-code "</span>, <span class="string">@"public.image"</span>, <span class="string">@"public.audiovisual-content"</span>, <span class="string">@"com.adobe.pdf"</span>, <span class="string">@"com.apple.keynote.key"</span>, <span class="string">@"com.microsoft.word.doc"</span>, <span class="string">@"com.microsoft.excel.xls"</span>, <span class="string">@"com.microsoft.powerpoint.ppt"</span>];</div><div class="line"></div><div class="line"> <span class="built_in">UIDocumentPickerViewController</span> *documentPicker = [[<span class="built_in">UIDocumentPickerViewController</span> alloc] initWithDocumentTypes:documentTypes inMode:<span class="built_in">UIDocumentPickerModeOpen</span>];</div><div class="line"> </div><div class="line"> documentPicker.delegate = <span class="keyword">self</span>;</div><div class="line"> </div><div class="line"> documentPicker.modalPresentationStyle = <span class="built_in">UIModalPresentationFullScreen</span>;</div><div class="line"> </div><div class="line"> [<span class="keyword">self</span> presentViewController:documentPicker animated:<span class="literal">YES</span> completion:<span class="literal">nil</span>];</div></pre></td></tr></table></figure>
+<p>选择之后根据documentPicker的代理方法<code>- (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL *)url;</code> 获取到文档的地址.然后<code>NSFileCoordinator</code>读取文件地址</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)documentPicker:(<span class="built_in">UIDocumentPickerViewController</span> *)controller didPickDocumentAtURL:(<span class="built_in">NSURL</span> *)url &#123;</div><div class="line">    </div><div class="line">    <span class="built_in">BOOL</span> fileUrlAuthozied = [url startAccessingSecurityScopedResource];</div><div class="line">    <span class="keyword">if</span>(fileUrlAuthozied)&#123;</div><div class="line">        <span class="built_in">NSFileCoordinator</span> *fileCoordinator = [[<span class="built_in">NSFileCoordinator</span> alloc] init];</div><div class="line">        <span class="built_in">NSError</span> *error;</div><div class="line">        __block <span class="built_in">NSData</span> *fileData;</div><div class="line"></div><div class="line">        [fileCoordinator coordinateReadingItemAtURL:url options:<span class="number">0</span> error:&amp;error byAccessor:^(<span class="built_in">NSURL</span> *newURL) &#123;</div><div class="line">            </div><div class="line">            <span class="built_in">NSString</span> *fileName = [newURL lastPathComponent];</div><div class="line">            <span class="built_in">NSString</span> *fileStr = [<span class="built_in">NSString</span> stringWithContentsOfURL:newURL encoding:<span class="built_in">NSUTF8StringEncoding</span> error:<span class="literal">nil</span>];</div><div class="line">            </div><div class="line">            [<span class="keyword">self</span> dismissViewControllerAnimated:<span class="literal">YES</span> completion:<span class="literal">NULL</span>];</div><div class="line">            </div><div class="line">        &#125;];</div><div class="line">        [url stopAccessingSecurityScopedResource];</div><div class="line">        </div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="comment">//Error handling</span></div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
-
-<!--end--></p>
       
     </div>
     
@@ -230,15 +233,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/09/30/In-House/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          企业版应用发布流程
-        
-      </div>
-    </a>
   
+    <a href="/2017/09/05/迁移测试/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">迁移测试</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 

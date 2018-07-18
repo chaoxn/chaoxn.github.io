@@ -88,8 +88,6 @@
 				        
 							<li><a href="/archives">文章</a></li>
 				        
-							<li><a href="/resume">简历</a></li>
-				        
 						</ul>
 					</nav>
 					<nav class="header-nav">
@@ -110,7 +108,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iCoud/" style="font-size: 10px;">iCoud</a> <a href="/tags/iOS10/" style="font-size: 10px;">iOS10</a> <a href="/tags/iOS9/" style="font-size: 15px;">iOS9</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/学习笔记/" style="font-size: 20px;">学习笔记</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+						<a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iCoud/" style="font-size: 10px;">iCoud</a> <a href="/tags/iOS10/" style="font-size: 10px;">iOS10</a> <a href="/tags/iOS12/" style="font-size: 10px;">iOS12</a> <a href="/tags/iOS9/" style="font-size: 15px;">iOS9</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/学习笔记/" style="font-size: 20px;">学习笔记</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
 					</div>
 				</section>
 				
@@ -153,8 +151,6 @@
 		        
 					<li><a href="/archives">文章</a></li>
 		        
-					<li><a href="/resume">简历</a></li>
-		        
 		        <div class="clearfix"></div>
 				</ul>
 			</nav>
@@ -175,6 +171,68 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Method-Swizzing-Aspects" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/14/Method-Swizzing-Aspects/" class="article-date">
+  	<time datetime="2015-12-14T08:23:02.000Z" itemprop="datePublished">2015-12-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/14/Method-Swizzing-Aspects/">黑科技 - Method Swizzling 与 Aspects</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>反复阅读了宇大一篇关于应用架构的<a href="http://casatwy.com/iosying-yong-jia-gou-tan-viewceng-de-zu-zhi-he-diao-yong-fang-an.html" target="_blank" rel="external">文章</a>. 不得不说宇大的这个系列文章干货十足,每次阅读都会有不同的收获, 而且也潜移默化的改变了我很多的编码风格.而且其中一些前卫的思想即时现在也不太理解. 当时对</p>
+<blockquote>
+<p>业务方可以不用通过继承的方法，然后框架能够做到对ViewController的统一配置。<br>业务方即使脱离框架环境，不需要修改任何代码也能够跑完代码。业务方的ViewController一旦丢入框架环境，不需要修改任何代码，框架就能够起到它应该起的作用。</p>
+</blockquote>
+<p>取消继承的想法很感兴趣，而Method Swizzling可以帮助我们在不改变一个类或类实例的代码的前提下,有效更改类的方法实现。最近利用空闲时间对自己的项目使用 Category + Method Swizzling(Aspects)取代了继承， 在此把之间的一些所学记录一下。</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/12/14/Method-Swizzing-Aspects/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-ReactiveCocoa与MVVM" class="article article-type-post" itemscope itemprop="blogPost">
   

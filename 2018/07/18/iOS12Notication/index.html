@@ -13,20 +13,20 @@
 <meta property="og:site_name" content="潮汐">
 <meta property="og:description" content="前言在苹果2018年6月新召开的WWDC大会上, 苹果针对iOS12提出了许多新的框架和功能. 具体有什么可以看这里.今天主要就其中Notifications新增的特性做一些了解. 原文中对iOS12推送的描述是这样的:  Notification content app extensions now support user interactivity in custom views. If t">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://7xnqnj.com1.z0.glb.clouddn.com/ios12N_11.gif">
-<meta property="og:image" content="http://7xnqnj.com1.z0.glb.clouddn.com/ios12N_01.png">
-<meta property="og:image" content="http://7xnqnj.com1.z0.glb.clouddn.com/ios12N_05.png">
-<meta property="og:image" content="http://7xnqnj.com1.z0.glb.clouddn.com/iOS12N_06.png">
-<meta property="og:image" content="http://7xnqnj.com1.z0.glb.clouddn.com/iOS12N_07.png">
-<meta property="og:image" content="http://7xnqnj.com1.z0.glb.clouddn.com/iOS12N_08.png">
-<meta property="og:image" content="http://7xnqnj.com1.z0.glb.clouddn.com/ios12N_09.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chaoxn/OSS/master/ios12N_11.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/chaoxn/OSS/master/ios12N_01.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chaoxn/OSS/master/ios12N_05.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chaoxn/OSS/master/iOS12N_06.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chaoxn/OSS/master/iOS12N_07.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chaoxn/OSS/master/iOS12N_08.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chaoxn/OSS/master/ios12N_09.png">
 <meta property="og:image" content="https://docs-assets.developer.apple.com/published/f23de7e6c7/23929faa-614c-4ba9-82b1-c4d5785c25a6.png">
-<meta property="og:image" content="http://7xnqnj.com1.z0.glb.clouddn.com/ios12N_10.png">
-<meta property="og:updated_time" content="2018-07-18T13:18:50.620Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/chaoxn/OSS/master/ios12N_10.png">
+<meta property="og:updated_time" content="2019-12-24T02:13:43.328Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS12Notication">
 <meta name="twitter:description" content="前言在苹果2018年6月新召开的WWDC大会上, 苹果针对iOS12提出了许多新的框架和功能. 具体有什么可以看这里.今天主要就其中Notifications新增的特性做一些了解. 原文中对iOS12推送的描述是这样的:  Notification content app extensions now support user interactivity in custom views. If t">
-<meta name="twitter:image" content="http://7xnqnj.com1.z0.glb.clouddn.com/ios12N_11.gif">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/chaoxn/OSS/master/ios12N_11.gif">
   
     <link rel="alternative" href="/atom.xml" title="潮汐" type="application/atom+xml">
   
@@ -120,7 +120,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iCoud/" style="font-size: 10px;">iCoud</a> <a href="/tags/iOS10/" style="font-size: 10px;">iOS10</a> <a href="/tags/iOS12/" style="font-size: 10px;">iOS12</a> <a href="/tags/iOS9/" style="font-size: 13.33px;">iOS9</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/学习笔记/" style="font-size: 20px;">学习笔记</a> <a href="/tags/随笔/" style="font-size: 13.33px;">随笔</a>
+						<a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iCoud/" style="font-size: 10px;">iCoud</a> <a href="/tags/iOS10/" style="font-size: 10px;">iOS10</a> <a href="/tags/iOS12/" style="font-size: 10px;">iOS12</a> <a href="/tags/iOS9/" style="font-size: 13.33px;">iOS9</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/学习笔记/" style="font-size: 20px;">学习笔记</a> <a href="/tags/随笔/" style="font-size: 16.67px;">随笔</a>
 					</div>
 				</section>
 				
@@ -225,10 +225,10 @@
 </blockquote>
 <p>意思是推送通知的扩展内容支持与用户的交互, Notification Extension是iOS10的时候苹果推出的通知扩展内容,我们可以自定义通知内容的样式,但是是不允许交互的.除此之外, 此次还新增了,推送分组功能,通知中心多了管理功能,还多了几种权限管理的功能. 这是我做的demo的gif,接下来让我们一一摸索下.</p>
 <a id="more"></a>
-<p><img src="http://7xnqnj.com1.z0.glb.clouddn.com/ios12N_11.gif" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/chaoxn/OSS/master/ios12N_11.gif" alt=""></p>
 <p>ps. 目前工程需要在xcode10之下创建, 所以需要先下载<a href="https://developer.apple.com/download" target="_blank" rel="external">xcode10的beta版</a>,旧版可以与新版本共存,所以问题不大,可以放心下载.</p>
 <h2 id="通知分组功能"><a href="#通知分组功能" class="headerlink" title="通知分组功能"></a><strong>通知分组功能</strong></h2><p>目前我们收到的推送都是一条一条推过来的, 有时候会密集的收到某个app的多次推送轰炸, 或者是某个人同时发来的很多条消息. 大概为了解决这个痛点, 苹果在iOS12为我们把推送消息进行了分组. 同一类型的通知会被合成一个通知组，用户可以通过点击通知组展开组里的所有通知. 分组方式分为两种:自动分组和线程标识. 分组的效果图如下:</p>
-<p><img src="http://7xnqnj.com1.z0.glb.clouddn.com/ios12N_01.png" width="35%" height="35%"></p>
+<p><img src="https://raw.githubusercontent.com/chaoxn/OSS/master/ios12N_01.png" width="35%" height="35%"></p>
 <ul>
 <li><p>自动分组</p>
 <p>自动分组就是根据app的类型来把不同app的消息分成一组,但是如果你想把自己app的消息也分一下组就用到了另一种方式.</p>
@@ -239,7 +239,7 @@
 </ul>
 <p>下面直接上代码,首先,我们需要先向用户进行权限申请, 也非常简单.</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> notificationCenter = UNUserNotificationCenter.current()</div><div class="line">  notificationCenter.requestAuthorization(option<span class="variable">s:</span> [.badge,.alert,.sound]) &#123; (<span class="keyword">tag</span>, error) in</div><div class="line">      <span class="keyword">if</span> <span class="keyword">tag</span> &#123;</div><div class="line">          <span class="keyword">print</span>(<span class="string">"允许"</span>)</div><div class="line">      &#125;<span class="keyword">else</span> &#123;</div><div class="line">          <span class="keyword">print</span>(<span class="string">"被拒: \(error?.localizedDescription ?? "</span><span class="string">")."</span>)</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<p>不过需要注意的是, 在iOS12除了原有的badge,alert,sound基础上出了几个新的选项.<br><img src="http://7xnqnj.com1.z0.glb.clouddn.com/ios12N_05.png" alt=""></p>
+<p>不过需要注意的是, 在iOS12除了原有的badge,alert,sound基础上出了几个新的选项.<br><img src="https://raw.githubusercontent.com/chaoxn/OSS/master/ios12N_05.png" alt=""></p>
 <ul>
 <li><p>provisional: 临时授权, 通知会出现在通知中心并在应用图标上出现标记，但不会显示在锁定屏幕上，不会显示横幅，也不会播放声音,之后可以选择正常推送还是继续静默.</p>
 </li>
@@ -248,7 +248,7 @@
 </ul>
 <p>然后第二步, 设置推送的Categories. iOS12之前我们可以通过在Category中添加不同的action, 然后推送的内容下面就会弹出这些action来响应用户操作,但是我们的扩展内容支持交互了,就不需要添加action. 点进UNNotificationCategory的头文件,会发现现在category的init方法中多了一个带<strong>categorySummaryFormat</strong>参数的方法.<br>其实这个就是设置我上面例子中的<strong>1 moer notifications from</strong></p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> summaryFormat = <span class="string">"%u 条更多消息~~~"</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> debitOverdraftNotifCategory = UNNotificationCategory(identifier: <span class="string">"FNNotification"</span>,</div><div class="line">                                                         action<span class="variable">s:</span> [],</div><div class="line">                                                         intentIdentifier<span class="variable">s:</span> [],</div><div class="line">                                                         hiddenPreviewsBodyPlaceholder: nil,</div><div class="line">                                                         categorySummaryForma<span class="variable">t:</span> summaryFormat,</div><div class="line">                                                         option<span class="variable">s:</span> [])</div></pre></td></tr></table></figure>
-<p>设置完categorySummaryFormat之后推送的消息会按照我们的设置来, 像这样<br><img src="http://7xnqnj.com1.z0.glb.clouddn.com/iOS12N_06.png" alt=""></p>
+<p>设置完categorySummaryFormat之后推送的消息会按照我们的设置来, 像这样<br><img src="https://raw.githubusercontent.com/chaoxn/OSS/master/iOS12N_06.png" alt=""></p>
 <p>当然还有另一种定制方式,定制完会像上面显示的一样,这个下面会提到.</p>
 <p>接下来就是创建一个本地通知然后发送,代码如下:</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">UNUserNotificationCenter.current().getNotificationSettings &#123; (settings) <span class="keyword">in</span></div><div class="line">            </div><div class="line">            guard settings.authorizationStatus == .authorized <span class="keyword">else</span> &#123; <span class="keyword">return</span> &#125;</div><div class="line">            </div><div class="line">            var names = [<span class="string">"法国"</span>, <span class="string">"法国"</span>,<span class="string">"法国"</span>,<span class="string">"克罗地亚"</span>,<span class="string">"克罗地亚"</span>]</div><div class="line">            </div><div class="line">            <span class="comment">// 推送2组消息, 一组3条,一组2条</span></div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0.</span>.<span class="number">.4</span> &#123;</div><div class="line">                let content = UNMutableNotificationContent()</div><div class="line">                content.title = <span class="string">"🍉 西瓜打折啦! 错过等三年!"</span></div><div class="line">                content.body = <span class="string">"下拉这个对话框"</span></div><div class="line">                content.categoryIdentifier = <span class="string">"FNNotification"</span></div><div class="line">                content.sound = UNNotificationSound.<span class="keyword">default</span></div><div class="line">                content.threadIdentifier = names[i]  <span class="comment">//分组标识符 属于哪个分组</span></div><div class="line">                content.summaryArgument  = names[i]</div><div class="line"></div><div class="line">                <span class="comment">/** 设置推送的图片</span></div><div class="line"><span class="comment">                 </span></div><div class="line"><span class="comment">                 远程通知需要在推送的payload中指定需要加载的图片资源地址, 也可以是网络地址, 需要下载到本地然后继续设置attachment</span></div><div class="line"><span class="comment">                 </span></div><div class="line"><span class="comment">                 */</span></div><div class="line">                <span class="keyword">if</span> let imageURL = Bundle.main.url(<span class="string">forResource:</span> <span class="string">"image"</span>, <span class="string">withExtension:</span> <span class="string">"jpeg"</span>),</div><div class="line">                  let attachment = <span class="keyword">try</span>? UNNotificationAttachment(identifier: <span class="string">"imageAttachment"</span>, <span class="string">url:</span> imageURL, <span class="string">options:</span> nil)</div><div class="line">                &#123;</div><div class="line">                    content.attachments = [attachment]</div><div class="line">                &#125;</div><div class="line">                </div><div class="line">                <span class="comment">//创建发送触发</span></div><div class="line">                let trigger = UNTimeIntervalNotificationTrigger(<span class="string">timeInterval:</span> <span class="number">5</span>, <span class="string">repeats:</span> <span class="literal">false</span>)</div><div class="line">                </div><div class="line">                <span class="comment">//创建发送请求</span></div><div class="line">                let request = UNNotificationRequest(<span class="string">identifier:</span> UUID().uuidString, <span class="string">content:</span> content, <span class="string">trigger:</span> trigger)</div><div class="line">                </div><div class="line">                <span class="comment">//将请求添加到发送中心</span></div><div class="line">                UNUserNotificationCenter.current().add(request, <span class="string">withCompletionHandler:</span> nil)</div><div class="line">            &#125;</div></pre></td></tr></table></figure>
@@ -267,8 +267,8 @@
 </ul>
 <hr>
 <p>通过上面这些操作, 就可以发送一个带有定制尾巴的分组推送了,当然如果是远程推送的话在payload中设置相应的字段就可以了.需要额外提一下的是,能否分组的终极权限还是在用户手里, 用户可以在设置界面选择是自动,按应用还是关闭.选择按应用之后我们设置的threadIdentifier就不会起作用了.</p>
-<p><img src="http://7xnqnj.com1.z0.glb.clouddn.com/iOS12N_07.png" alt=""></p>
-<p><img src="http://7xnqnj.com1.z0.glb.clouddn.com/iOS12N_08.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/chaoxn/OSS/master/iOS12N_07.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/chaoxn/OSS/master/iOS12N_08.png" alt=""></p>
 <h2 id="扩展内容的可交互性"><a href="#扩展内容的可交互性" class="headerlink" title="扩展内容的可交互性"></a><strong>扩展内容的可交互性</strong></h2><p>创建Notification Extension,操作方式如下:</p>
 <ol>
 <li><p>File &gt; New &gt; Target</p>
@@ -278,16 +278,16 @@
 <li><p>点击next, 命名, 点击finished</p>
 </li>
 </ol>
-<!--![](http://7xnqnj.com1.z0.glb.clouddn.com/ios12N_02.png) ![](http://7xnqnj.com1.z0.glb.clouddn.com/ios12N_03.png)-->
+<!--![](https://raw.githubusercontent.com/chaoxn/OSS/master/ios12N_02.png) ![](https://raw.githubusercontent.com/chaoxn/OSS/master/ios12N_03.png)-->
 <p>然后在工程目录下会多一个extension, 会自带一个viewController,storyboard和info.plist. 这个viewController就是供我们自定义UI用的.info文件里可以配置一些视图的信息.</p>
-<p><img src="http://7xnqnj.com1.z0.glb.clouddn.com/ios12N_09.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/chaoxn/OSS/master/ios12N_09.png" alt=""></p>
 <p>不过在自定义之前, 我们还需要了解下Extension的整体结构.</p>
 <p><img src="https://docs-assets.developer.apple.com/published/f23de7e6c7/23929faa-614c-4ba9-82b1-c4d5785c25a6.png" alt=""></p>
 <p>header是app的名字, 底部default是之前设置content中的标题和副标题,中间就是我们可以自定义的部分了.当然底部是可以隐藏掉的, 需要在info里面配置,之后会详细解释.</p>
 <p>然后就可以在storyboard中配置自己想要的UI,拖入一些控件然后关联到viewController中.在viewController系统已经帮我们写好了一个didReceive的方法,推送的内容可以在这里接收到.那我们就可以在这里将内容和UI关联起来做一些交互.</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">   <span class="function"><span class="keyword">func</span> <span class="title">didReceive</span><span class="params">(<span class="number">_</span> notification: UNNotification)</span></span> &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>做完这些还有最后一步, 就是配置info.plist, 主要是NSExtensionAttributes中的内容.默认的是只有前面两个属性的</p>
-<p><img src="http://7xnqnj.com1.z0.glb.clouddn.com/ios12N_10.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/chaoxn/OSS/master/ios12N_10.png" alt=""></p>
 <ul>
 <li>UNNotificationExtensionCategory(必选) 我们之前设置的category的identifier</li>
 <li>UNNotificationExtensionInitialContentSizeRatio (必选) 页面的比例系数,通过这个来调整自定义UI的大小</li>
@@ -306,11 +306,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/02/28/realm/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/01/10/图床迁移记录/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          realm使用小结
+          图床迁移记录
         
       </div>
     </a>

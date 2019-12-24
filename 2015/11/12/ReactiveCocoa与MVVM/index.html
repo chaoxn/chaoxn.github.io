@@ -13,12 +13,12 @@
 <meta property="og:site_name" content="潮汐">
 <meta property="og:description" content="初衷  最近刚开发完一款公司的ipad应用，有两个界面的网络请求都达到了十个以上，在控件的创建约束都是由xib来完成的情况下，试图控制器中的代码都达到了1400多行。业务逻辑处理非常混乱，数据和视图之间高度偶耦合。虽然所有功能需求都能实现，但代码的可读性非常差，以后的迭代肯定也非常麻烦。所以趁不忙的时候打算着手研究一下MVVM与ReactiveCocoa。这篇博客会一直记录最近的所学。  基本理">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://7xnqnj.com1.z0.glb.clouddn.com/FRP_ReactiveCocoa_large.png">
-<meta property="og:updated_time" content="2016-01-05T06:55:26.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/chaoxn/OSS/master//FRP_ReactiveCocoa_large.png">
+<meta property="og:updated_time" content="2019-12-24T02:15:59.859Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ReactiveCocoa学习总结">
 <meta name="twitter:description" content="初衷  最近刚开发完一款公司的ipad应用，有两个界面的网络请求都达到了十个以上，在控件的创建约束都是由xib来完成的情况下，试图控制器中的代码都达到了1400多行。业务逻辑处理非常混乱，数据和视图之间高度偶耦合。虽然所有功能需求都能实现，但代码的可读性非常差，以后的迭代肯定也非常麻烦。所以趁不忙的时候打算着手研究一下MVVM与ReactiveCocoa。这篇博客会一直记录最近的所学。  基本理">
-<meta name="twitter:image" content="http://7xnqnj.com1.z0.glb.clouddn.com/FRP_ReactiveCocoa_large.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/chaoxn/OSS/master//FRP_ReactiveCocoa_large.png">
   
     <link rel="alternative" href="/atom.xml" title="潮汐" type="application/atom+xml">
   
@@ -112,7 +112,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iCoud/" style="font-size: 10px;">iCoud</a> <a href="/tags/iOS10/" style="font-size: 10px;">iOS10</a> <a href="/tags/iOS12/" style="font-size: 10px;">iOS12</a> <a href="/tags/iOS9/" style="font-size: 13.33px;">iOS9</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/学习笔记/" style="font-size: 20px;">学习笔记</a> <a href="/tags/随笔/" style="font-size: 13.33px;">随笔</a>
+						<a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iCoud/" style="font-size: 10px;">iCoud</a> <a href="/tags/iOS10/" style="font-size: 10px;">iOS10</a> <a href="/tags/iOS12/" style="font-size: 10px;">iOS12</a> <a href="/tags/iOS9/" style="font-size: 13.33px;">iOS9</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/学习笔记/" style="font-size: 20px;">学习笔记</a> <a href="/tags/随笔/" style="font-size: 16.67px;">随笔</a>
 					</div>
 				</section>
 				
@@ -237,7 +237,7 @@
 
 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">NSDictionary *<span class="keyword">dictonary </span>= @&#123;@<span class="string">"title"</span>:@<span class="string">"RAC"</span>,@<span class="string">"auther"</span>:@<span class="string">"潮汐"</span>&#125;<span class="comment">;</span></div><div class="line">    </div><div class="line">RACSequence *dSequence = [<span class="keyword">dictonary </span>rac_sequence]<span class="comment">;</span></div><div class="line">    </div><div class="line">[dSequence.signal <span class="keyword">subscribeNext:^(RACTuple </span>*x) &#123;</div><div class="line">       </div><div class="line">   RACTupleUnpack(NSString *key, NSString *value) = x<span class="comment">;</span></div><div class="line">        </div><div class="line">   NSLog(@<span class="string">"%@, %@"</span>,key,value)<span class="comment">;</span></div><div class="line"> &#125;]<span class="comment">;</span></div><div class="line"> </div><div class="line">打印结果如下</div><div class="line"><span class="number">2015</span>-11-12 <span class="number">15</span>:<span class="number">18</span>:<span class="number">38</span>.<span class="number">108</span> chaoxi[<span class="number">63381</span>:<span class="number">6753990</span>] title, RAC</div><div class="line"><span class="number">2015</span>-11-12 <span class="number">15</span>:<span class="number">18</span>:<span class="number">38</span>.<span class="number">110</span> chaoxi[<span class="number">63381</span>:<span class="number">6753990</span>] auther, 潮汐</div></pre></td></tr></table></figure>
 <p><font color="darkslateblue" size="3"><strong>6.其他：</strong></font> 还有很多类似RACScheduler的信号我还没有了解到，这里就不做详细介绍</p>
-<p>这是摘自花瓣网工程师博客的一幅图，可以直观的看到各个类之间的关系<br><img src="http://7xnqnj.com1.z0.glb.clouddn.com/FRP_ReactiveCocoa_large.png" alt="t"></p>
+<p>这是摘自花瓣网工程师博客的一幅图，可以直观的看到各个类之间的关系<br><img src="https://raw.githubusercontent.com/chaoxn/OSS/master//FRP_ReactiveCocoa_large.png" alt="t"></p>
 <p><br><font color="orangeRed" size="4"><strong>常用的Category</strong></font><br><br>上面简单介绍了一些基本类，而RAC本身也通过Category为UIKit的很多基本控件添加了很多的Signal，方便我们直接的订阅信号。接下来介绍一些常用的Category。</p>
 <ol>
 <li><p><strong>TextField：</strong> rac_textSignal 直接绑定在TextField上的信号，可以实时监听TF上输入的内容。然后进行过滤判断等操作。</p>

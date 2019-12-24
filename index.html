@@ -108,7 +108,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iCoud/" style="font-size: 10px;">iCoud</a> <a href="/tags/iOS10/" style="font-size: 10px;">iOS10</a> <a href="/tags/iOS12/" style="font-size: 10px;">iOS12</a> <a href="/tags/iOS9/" style="font-size: 13.33px;">iOS9</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/学习笔记/" style="font-size: 20px;">学习笔记</a> <a href="/tags/随笔/" style="font-size: 13.33px;">随笔</a>
+						<a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iCoud/" style="font-size: 10px;">iCoud</a> <a href="/tags/iOS10/" style="font-size: 10px;">iOS10</a> <a href="/tags/iOS12/" style="font-size: 10px;">iOS12</a> <a href="/tags/iOS9/" style="font-size: 13.33px;">iOS9</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/学习笔记/" style="font-size: 20px;">学习笔记</a> <a href="/tags/随笔/" style="font-size: 16.67px;">随笔</a>
 					</div>
 				</section>
 				
@@ -172,59 +172,6 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-图床迁移记录" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/12/24/图床迁移记录/" class="article-date">
-  	<time datetime="2019-12-24T01:32:19.455Z" itemprop="datePublished">2019-12-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="图床迁移记录"><a href="#图床迁移记录" class="headerlink" title="图床迁移记录"></a>图床迁移记录</h2><h4 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h4><p>15年开始就一直以七牛做图床，空间流量对我这个小博客来说完全够用，然鹅一年前开始，七牛收回了下发的测试域名，只能用备案的域名，我这个小域名没有备案，所以也就没办法继续使用了。所以开工吧</p>
-<h4 id="一-配置qshell账号"><a href="#一-配置qshell账号" class="headerlink" title="一. 配置qshell账号"></a>一. 配置qshell账号</h4><p>迁移的话我们需要把我们之前存储的图片导出来，七牛有一个<a href="https://developer.qiniu.com/kodo/tools/1302/qshell#2" target="_blank" rel="external">qshell</a> 可以帮助我们进行操作。先下载qshell包到本机，解压，查看是否可以正常运行。执行</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> qshell account ak sk</span></div></pre></td></tr></table></figure>
-<p>来配置账号密码，账号和密码信息在这里 <a href="https://portal.qiniu.com/user/key" target="_blank" rel="external">https://portal.qiniu.com/user/key</a> 。</p>
-<h4 id="二-将废弃测试域名空间转移至测试域名空间"><a href="#二-将废弃测试域名空间转移至测试域名空间" class="headerlink" title="二 将废弃测试域名空间转移至测试域名空间"></a>二 将废弃测试域名空间转移至测试域名空间</h4><p>配置成功之后下一步就是导出图片了，首先将图片从废弃域名空间转移到新的测试域名空间（这个新的是有期限的，所以不能长期使用，这里用来过度）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1）qshell listbucket 原bucket名 list.txt （list出全部文件，https://github.com/qiniu/qshell/blob/master/docs/listbucket.md）</div><div class="line">2）cat list.txt | awk '&#123;print $1&#125;' &gt;list_final.txt （ 用awk获取list结果的第一列）</div><div class="line">3）qshell batchcopy 原bucket名 新bucket名 list_final.txt （复制到新bucket的文件和原bucket文件名一）</div></pre></td></tr></table></figure>
-<h4 id="三-将新的可用测试域名空间中的图片下载到本地"><a href="#三-将新的可用测试域名空间中的图片下载到本地" class="headerlink" title="三 将新的可用测试域名空间中的图片下载到本地"></a>三 将新的可用测试域名空间中的图片下载到本地</h4><p> 七牛提供了  <a href="https://github.com/qiniu/qshell/blob/master/docs/qdownload.md" target="_blank" rel="external">qdownload</a>  的方法，但是这个是收费的，但是不慌，通过设置 <code>cdn_domain</code> 参数可免费使用 10G 的流量。该命令使用方法如下，其中 <code>LocalDownloadConfig</code> 为本地下载的配置文件。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> qshell qdownload [&lt;ThreadCount&gt;] &lt;LocalDownloadConfig&gt;</span></div></pre></td></tr></table></figure>
-<p>新建一个配置文件，其中 <code>bucket</code> 为存储空间名称，<code>cdn_domain</code> 为需同步存储空间的外部默认域名，如果不配制<code>cdn_domain</code>的话，需支付源站流量费用，无法减免。</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"dest_dir"</span>   :   <span class="string">"/Users/it-ab/Desktop/backup"</span>,</div><div class="line">    <span class="attr">"bucket"</span>     :   <span class="string">"chaoxbackup"</span>,</div><div class="line">    <span class="attr">"cdn_domain"</span> :   <span class="string">"pt0zshk5v.bkt.clouddn.com"</span>,</div><div class="line">    <span class="attr">"log_file"</span>   :   <span class="string">"download.log"</span>,</div><div class="line">    <span class="attr">"log_level"</span>  :   <span class="string">"info"</span>,</div><div class="line">    <span class="attr">"log_rotate"</span> :   <span class="number">1</span>,</div><div class="line">    <span class="attr">"log_stdout"</span> :   <span class="literal">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>命令执行完后，所有图片就会下载到指定的目录中。</p>
-<h4 id="四-上传图片到新的图床"><a href="#四-上传图片到新的图床" class="headerlink" title="四 上传图片到新的图床"></a>四 上传图片到新的图床</h4><p>我这里选择了github作为新的图床，没有去自己搭建也没去找新的渠道，新建一个Project把上面下载出来的文件夹push上去。</p>
-<h4 id="五-更换博客中的图片地址"><a href="#五-更换博客中的图片地址" class="headerlink" title="五 更换博客中的图片地址"></a>五 更换博客中的图片地址</h4><p>如果量很大的话可以用脚本正则去批量替换，我这里量非常少，所以手动就换好了。</p>
-<p>至此图床迁移完毕，待发掘到更好的图床再折腾吧。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
     <article id="post-leak" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -251,57 +198,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一-内存泄漏检测方法"><a href="#一-内存泄漏检测方法" class="headerlink" title="一 内存泄漏检测方法"></a>一 内存泄漏检测方法</h2><h4 id="1-自行生成Heap-Dump文件分析内存"><a href="#1-自行生成Heap-Dump文件分析内存" class="headerlink" title="1 自行生成Heap Dump文件分析内存"></a>1 自行生成Heap Dump文件分析内存</h4><p>​    Heap Dump是堆转储文件，其中包含很多内容：</p>
+        <h2 id="一-内存泄漏检测方法"><a href="#一-内存泄漏检测方法" class="headerlink" title="一 内存泄漏检测方法"></a>一 内存泄漏检测方法</h2><p></p><font color="orangeRed" size="4">1.自行生成Heap Dump文件分析内存</font><p></p>
+<p>​    Heap Dump是堆转储文件，其中包含很多内容：</p>
 <ul>
 <li>所有的对象信息<br> 对象的类信息、字段信息、原生值(int, long等)及引用值</li>
 <li>所有的类信息<br> 类加载器、类名、超类及静态字段</li>
 <li>垃圾回收的根对象<br> 根对象是指那些可以直接被虚拟机触及的对象</li>
 <li>线程栈及局部变量<br> 包含了转储时刻的线程调用栈信息和栈帧中的局部变量信息</li>
 </ul>
-<p>生成的方法很简单， 点击 <strong>View &gt; Tool Windows &gt; Profiler</strong> 然后在Memory Profiler界面中点击 2处的按钮即可</p>
-<p><img src="https://developer.android.com/studio/images/profile/memory-profiler-callouts_2x.png?hl=zh-cn" alt=""></p>
-<p>然后点击生成的Heap Dump文件可以看到如下图所示界面，界面中左侧会显示项目内所有内存分配的部分。我对secondActivity专门做了内存泄漏的操作，可以看到为这个Activity所分配的内存大小远远大于它本身的实例大小，所以这个Activity是有问题的，然后点击可以在右侧上方的Instance View中观察他的实例，第一个是明显有问题的，然后点击他在下方的Refercence中可以看到该实例的引用持有，然后不停点击就会发现其中的handler存在着循环引用，一直释放不掉。所以可以通过分析堆转储文件来找到响应的泄漏。</p>
-<p><img src="https://p.pstatp.com/origin/fefa00008711b436c141" alt=""></p>
-<h4 id="2-Record-memory-allocations录制一段时间内的内存分配"><a href="#2-Record-memory-allocations录制一段时间内的内存分配" class="headerlink" title="2 Record memory allocations录制一段时间内的内存分配"></a>2 Record memory allocations录制一段时间内的内存分配</h4><p>当我们对某个页面的某个时间的内存进行了一定的怀疑可以使用此方案，录制这段期间的内存分配。运行项目在Memory Profiler文件中，然后在时间轴上拖动某个范围，就可以拿到这段时间的堆转储文件。然后可以用方法一来进行分析，这样可以精准分析某个操作的内存事件，而不用像上面一样全部分析。</p>
-<p><img src="https://p.pstatp.com/origin/fe540000cc77f33affc4" alt=""></p>
-<p><img src="https://p.pstatp.com/origin/fea90000ac6fb1a4d58c" alt=""></p>
-<p><img src="https://p.pstatp.com/origin/ff8c000133fb22a17273" alt=""></p>
-<h4 id="3-LeakCanary第三方工具"><a href="#3-LeakCanary第三方工具" class="headerlink" title="3 LeakCanary第三方工具"></a>3 LeakCanary第三方工具</h4><p>LeakCanary是一个比较便捷的库，build导入之后也无须在文件中进行配置，直接运行项目它会在设备上生成一个leakcanary的app，当出现有内存泄漏的情况时，进入app里面会有相应的内存分析。</p>
-<p>简单说下LeakCanary的原理：</p>
-<ul>
-<li><p>监听<br>在Android中，当一个Activity走完onDestroy生命周期后，说明该页面已经被销毁了，应该被系统GC回收。通过Application.registerActivityLifecycleCallbacks()方法注册Activity生命周期的监听，每当一个Activity页面销毁时候，获取到这个Activity去检测这个Activity是否真的被系统GC。</p>
-</li>
-<li><p>检测<br>当获取了待分析的对象后，需要确定这个对象是否产生了内存泄漏。<br>通过WeakReference + ReferenceQueue来判断对象是否被系统GC回收，WeakReference 创建时，可以传入一个 ReferenceQueue 对象。当被 WeakReference 引用的对象的生命周期结束，一旦被 GC 检查到，GC 将会把该对象添加到 ReferenceQueue 中，待ReferenceQueue处理。当 GC 过后对象一直不被加入 ReferenceQueue，它可能存在内存泄漏。<br>当我们初步确定待分析对象未被GC回收时候，手动触发GC，二次确认。</p>
-</li>
-<li><p>分析<br>分析这块使用了Square的另一个开源库haha利用它获取当前内存中的heap堆信息的快照snapshot，然后通过待分析对象去snapshot里面去查找强引用关系。</p>
-</li>
-</ul>
-<p>下面是部分内存泄漏在该app中显示的内容：依次点进去，它会比较详细的告诉你你的哪个页面的哪个方法泄漏掉了。</p>
-<p><img src="https://p.pstatp.com/origin/fe960001145249287490" alt=""><br><img src="https://p.pstatp.com/origin/ffd700006d3b4d31935f" alt=""><br><img src="https://p.pstatp.com/origin/dc12000407bec17501e3" alt=""></p>
-<h2 id="二-内存泄漏原因分析"><a href="#二-内存泄漏原因分析" class="headerlink" title="二 内存泄漏原因分析"></a>二 内存泄漏原因分析</h2><h4 id="1-单例"><a href="#1-单例" class="headerlink" title="1 单例"></a>1 单例</h4><p>当调用getInstance时，如果传入的context是Activity的context。只要这个单例没有被释放，那么这个Activity也不会被释放一直到进程退出才会释放。</p>
-<p><img src="https://pic1.superbed.cn/item/5def445e1f8f59f4d67fedbd.jpg" alt=""></p>
-<p>能使用Application的Context就不要使用Activity的Content，Application的生命周期伴随着整个进程的周期。</p>
-<h4 id="2-Handler-造成的泄漏"><a href="#2-Handler-造成的泄漏" class="headerlink" title="2 Handler 造成的泄漏"></a>2 Handler 造成的泄漏</h4><p>如果Handler中有延迟任务或者等待执行的任务队列过长，都有可能因为Handler继续执行而导致Activity发生泄漏。</p>
-<ul>
-<li>首先，非静态的Handler类会默认持有外部类的引用，如Activity等。</li>
-<li>然后，还未处理完的消息（Message）中会持有Handler的引用。</li>
-<li>还未处理完的消息会处于消息队列中，即消息队列MessageQueue会持有Message的引用。</li>
-<li>消息队列MessageQueue位于Looper中，Looper的生命周期跟应用一致。</li>
-</ul>
-<p><img src="https://pic.superbed.cn/item/5def44c81f8f59f4d6803a1c.jpg" alt=""></p>
-<h4 id="3-线程未终止造成的泄漏"><a href="#3-线程未终止造成的泄漏" class="headerlink" title="3 线程未终止造成的泄漏"></a>3 线程未终止造成的泄漏</h4><p>子线程中不当的使用Looper.prepare()和Looper.loop()方法造成内存泄漏。 Looper.loop()是一个无限循环的方法，它是反复的去MessageQueue里面去取出Message并分发给对应的Handler去执行，如果在子线程中调用了Looper.prepare()和Looper.loop()方法，Looper.loop()会导致这个线程一直不死，一直堵在这里，因此线程就无法结束运行，在Looper.prepare()和Looper.loop()之间的所有对象都没办法被释放，解决方案就是在不用的时候及时的把Looper给quit掉</p>
-<h4 id="4-对象的注册和反注册没有成对出现"><a href="#4-对象的注册和反注册没有成对出现" class="headerlink" title="4 对象的注册和反注册没有成对出现"></a>4 对象的注册和反注册没有成对出现</h4><p><img src="https://pic1.superbed.cn/item/5def45601f8f59f4d680e17a.jpg" alt=""></p>
-<p>类似的还有一些系统的服务注册之后一定要注销，Activity中的启动了属性动画在销毁的时候，也要调用cancle方法。如果不cancel掉属性动画就会一直运行并且一直去执行控件的onDraw方法，那么控件持有了Activity对象，而属性动画ObjectAnimator持有了I该控件，ObjectAnimator一直在运行，那么Activity对象也就不能被释放了。</p>
-<h2 id="三-如何避免写出内存泄漏的代码"><a href="#三-如何避免写出内存泄漏的代码" class="headerlink" title="三 如何避免写出内存泄漏的代码"></a>三 如何避免写出内存泄漏的代码</h2><ol>
-<li>注意不要让类变量直接或间接地持有Activity context引用</li>
-<li>尽量不要在单例中使用Activity context，如果要用，不能将其作为全局变量</li>
-<li>时刻注意内部类（尤其是Activity的内部类）的生命周期，尽量使用静态内部类代替内部类，如果内部类需要访问外部类的成员，可以用“静态内部类+弱引用”代替；内部类的生命周期不应该超出外部类，外部类结束前，应该及时结束内部类生命周期（停止线程、AsyncTask、TimerTask、Handler消息等，移除类变量或长生命周期的线程对Callback、listener等的强引用）</li>
-<li>及时注销广播以及一些系统服务的监听器</li>
-<li>属性动画在Activity销毁前记得cancel</li>
-<li>文件流、Cursor等资源用完及时关闭</li>
-<li>Activity销毁前WebView的移除和销毁</li>
-</ol>
-
       
     </div>
     
@@ -314,6 +218,10 @@
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2019/06/21/leak/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -366,81 +274,7 @@
 </li>
 <li><p>安装<br> 从<a href="https://www.sonatype.com/download-oss-sonatype" target="_blank" rel="external">官网</a>下载最新的OSS nexus安装包，可能速度会有点慢，解压到系统的任一目录下即可, 我放到了应用程序的目录里。</p>
 </li>
-<li><p>启动</p>
-<ul>
-<li><p>终端切换到nexus bin的目录下</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /Applications/nexus<span class="number">-3.17</span><span class="number">.0</span><span class="number">-01</span>-mac/nexus<span class="number">-3.17</span><span class="number">.0</span><span class="number">-01</span>/bin</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
 </ol>
-<pre><code>  启动 ./nexus start
-
-![nexus_01.png](https://github.com/chaoxn/OSS/blob/master/nexus_01.png?raw=true)
-</code></pre><ol>
-<li><p>修改默认端口</p>
-<ul>
-<li><p>在nexus配置文件目录下</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Applications/nexus<span class="number">-3.17</span><span class="number">.0</span><span class="number">-01</span>-mac/sonatype-work/nexus3/etc</div></pre></td></tr></table></figure>
-</li>
-<li><p>找到配置文件 nexus.properties 修改application-port 为 8088</p>
-</li>
-<li>重新启动nexus ./nexus restart</li>
-</ul>
-</li>
-</ol>
-<h4 id="二-Maven仓库配置"><a href="#二-Maven仓库配置" class="headerlink" title="二. Maven仓库配置"></a>二. Maven仓库配置</h4><ol>
-<li><p>浏览器进入 <a href="[http://localhost:8081](http://localhost:8081/">管理页面</a>) , 通过默认的admin账号 admin123密码登录。 也有可能你的密码在/Applications/nexus-3.17.0-01-mac/sonatype-work/nexus3/password 这个路径里，去取一下就好</p>
-</li>
-<li><p>如图所示点击进入repository的配置页面<br><img src="https://github.com/chaoxn/OSS/blob/master/nexus_02.png?raw=true" alt="nexus_02.png"></p>
-</li>
-<li><p>点击create开始创建，然后选择maven host<br><img src="https://github.com/chaoxn/OSS/blob/master/nexus_03.png?raw=true" alt="nexus_03.png"></p>
-</li>
-</ol>
-<p>  <img src="https://github.com/chaoxn/OSS/blob/master/nexus_04.png?raw=true" alt="nexus_04.png"></p>
-<ol>
-<li><p>进去之后输入仓库名 然后在下面的online打勾，创建完成后可以再仓库列表中见到刚刚创建的仓库</p>
-<p><img src="https://github.com/chaoxn/OSS/blob/master/nexus_05.png?raw=true" alt="nexus_05.png"></p>
-</li>
-</ol>
-<h4 id="三-宿主工程-私有库Module设置"><a href="#三-宿主工程-私有库Module设置" class="headerlink" title="三. 宿主工程 私有库Module设置"></a>三. 宿主工程 私有库Module设置</h4><p>​    示例说明: 以封装自定义“私有库 rtlogger”为例</p>
-<ol>
-<li><p>新建宿主工程 RTLoggerLibHost</p>
-</li>
-<li><p>新建 module: rtlogger</p>
-<p>File-&gt;New-&gt;New Module-&gt;Android Library 设置 module 信息: </p>
-<p>Application/Library name: rtlogger Module name: rtlogger<br> Package name: com.rtmart.lib.rtlogger </p>
-<p>完成后,可看到宿主工程下看到新增的“rtlogger module”: </p>
-<p><img src="https://ae01.alicdn.com/kf/H006bc3a4c2614241b2e4c85703d98b93s.jpg" alt=""></p>
-</li>
-<li><p>宿主工程, build.gradle 配置<br>指明支持 maven 私有仓库:</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">allprojects</span>&#123;</div><div class="line">       <span class="selector-tag">repositories</span>&#123;</div><div class="line">         <span class="selector-tag">google</span>()</div><div class="line">         <span class="selector-tag">jcenter</span>()</div><div class="line">         <span class="comment">//需要添加的</span></div><div class="line">         <span class="selector-tag">mavenLocal</span>()</div><div class="line">	&#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol>
-<li><p>rtlogger module, build gradle 配置</p>
-<p>主要包括 3 个部分:</p>
-<p>1&gt; 对 kotlin 的支持,如果封装的私有库中,包含了 kotlin 代码,必须添加此配置,否则,虽然也会打包发布成功,但是外部用私有库时,只能获取到 java 类,所有 kotlin 类均无法获取.</p>
-<p>2&gt; 对 maven 的支持</p>
-<p>3&gt; maven 仓库信息、私有库打包发布配置</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//需要添加的 1:支持 kotlin</span></div><div class="line">apply <span class="string">plugin:</span><span class="string">'kotlin-android-extensions'</span></div><div class="line">apply <span class="string">plugin:</span><span class="string">'kotlin-android'</span></div><div class="line"></div><div class="line"><span class="comment">//需要添加的 2:支持 maven 仓库</span></div><div class="line">apply <span class="string">plugin:</span> <span class="string">'maven'</span></div><div class="line"></div><div class="line"><span class="comment">//需要添加的 3:发布配置</span></div><div class="line">   uploadArchives&#123;</div><div class="line">       repositories.mavenDeployer&#123;</div><div class="line"> 			<span class="comment">//仓库地址 + 账户</span></div><div class="line">      repository(<span class="string">url:</span><span class="string">"http://10.200.244.100:8088/repository/MavenTest_chaox/"</span>)&#123;</div><div class="line">      	authentication(<span class="string">userName:</span><span class="string">"admin"</span>,<span class="string">password:</span><span class="string">"admin123"</span>)</div><div class="line">      &#125;         </div><div class="line">      <span class="comment">//私有库信息</span></div><div class="line">       pom.version=<span class="string">"1.0.0"</span></div><div class="line">       pom.artifactId=<span class="string">"rtlogger"</span>        </div><div class="line">			 pom.groupId=<span class="string">"com.rtmart.lib"</span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">dependencies&#123;</div><div class="line"><span class="comment">//需要添加的支持kotlin</span></div><div class="line">		implementation <span class="string">"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol>
-<li><p>私有库 module 的 AndroidManifest.xml 配置 </p>
-<p>如果私有库内,使用了一些系统权限(eg: 网络状态访问)、activity 等资源需在此配 置.</p>
-</li>
-<li><p>rtlogger 私有库内部代码，简单起见,只定义一个打印 class:</p>
-<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RTLogger</span> </span>&#123;</div><div class="line">		<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> log(String <span class="keyword">str</span>)&#123;</div><div class="line">				Log.i(<span class="string">"RTLogger"</span>, <span class="keyword">str</span>);</div><div class="line">		&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>发布 View-&gt;Tool Window-&gt;Gradle-&gt;RTLoggerLibHost-&gt;:rtlogger-&gt;Tasks-&gt;upload<br>-&gt;uploadArchives-&gt; run RTLoggerLibHost:rtlogger</p>
-</li>
-<li><p>完成之后,可从 maven 仓库的 rtrepo 下找到 rtlogger 私有库</p>
-</li>
-</ol>
-<p>四。应用工程引用私有库</p>
-<p>​        新建项目，项目的gradle配置需要添加的maven，app gradle添加对私有库的依赖。然后代码中可以使用。</p>
-<figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> allprojects&#123;</div><div class="line">     repositories&#123;</div><div class="line">       google()</div><div class="line">       jcenter()    </div><div class="line">       maven &#123; url <span class="string">"http://10.200.244.100:8088/repository/MavenTest_chaox/"</span>&#125;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
     
@@ -453,6 +287,10 @@
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2019/04/15/maven/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -502,96 +340,6 @@
 </ul>
 <p>在项目的build.gradle中配置相关信息。</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    classpath <span class="string">"io.realm:realm-gradle-plugin:6.0.1"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在app的build.gradle中添加realm插件，并且导入realm的扩展库，方便我们使用。</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply plugin: <span class="string">'realm-android'</span></div></pre></td></tr></table></figure>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">implementation <span class="string">"com.github.vicpinm:krealmextensions:2.5.0"</span></div></pre></td></tr></table></figure>
-<h4 id="二-初始化及配置"><a href="#二-初始化及配置" class="headerlink" title="二. 初始化及配置"></a>二. 初始化及配置</h4><ol>
-<li>初始化数据库</li>
-</ol>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Realm.init(context);</div></pre></td></tr></table></figure>
-<ol>
-<li><p>配置数据库</p>
-<p>可以通过修改realm的RealmConfiguration来对reaml进行配置。几个比较常用的配置：</p>
-<ul>
-<li><p>name : 指定数据库的名称。如不指定默认名为default</p>
-</li>
-<li><p>schemaVersion : 指定数据库的版本号。</p>
-</li>
-<li><p>encryptionKey : 指定数据库的密钥。</p>
-</li>
-<li><p>migration: 指定迁移操作的迁移类。</p>
-</li>
-<li><p>deleteRealmIfMigrationNeeded : 版本冲突时自动删除原数据库。</p>
-</li>
-</ul>
-</li>
-</ol>
-<p><img src="https://p.pstatp.com/origin/fee60000776e3020e709" alt=""></p>
-<ol>
-<li><p>建表</p>
-<p>创建model类，继承自RealmObject，realm支持<code>boolean</code>, <code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>, <code>float</code>, <code>double</code>, <code>String</code>, <code>Date</code> and <code>byte[]</code> 以及realmObject子类等类型。 几种常用的注解：</p>
-<ul>
-<li><code>@PrimaryKey</code>——表示该字段是主键</li>
-<li><code>@Required</code>——表示该字段非空</li>
-<li><code>@Ignore</code>——表示忽略该字段</li>
-<li><code>@Index</code>——添加搜索索引</li>
-</ul>
-</li>
-</ol>
-<p>以下是一个订单表的简单示例。</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">RTOrderEntity</span> : <span class="type">RealmObject</span></span>() &#123;</div><div class="line"></div><div class="line">    <span class="meta">@PrimaryKey</span></div><div class="line">    <span class="keyword">var</span> orderId: String? = <span class="literal">null</span>  <span class="comment">// 订单号</span></div><div class="line"></div><div class="line">    <span class="meta">@Required</span></div><div class="line">    <span class="keyword">var</span> dutyCode: String? = <span class="string">""</span> <span class="comment">// 班次号</span></div><div class="line"></div><div class="line">    <span class="keyword">var</span> orderPaymentStatus: <span class="built_in">Int</span>? = <span class="number">0</span> <span class="comment">//0未支付,1已支付,2部分支付</span></div><div class="line"></div><div class="line">    <span class="keyword">var</span> payChannels: RealmList&lt;RTPayChanelEntity&gt;? = <span class="literal">null</span> <span class="comment">//支付方式列表</span></div><div class="line"></div><div class="line">    <span class="keyword">var</span> payTime: <span class="built_in">Long</span>? = <span class="literal">null</span> <span class="comment">//成交时间</span></div><div class="line">    ...</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<ol>
-<li><p>将表配置到数据库中。</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// config参数为之前配置的realmConfiguration</span></div><div class="line">RTRealmConfig.init(RTOrderEntity::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>, <span class="type">myConfig)</span></span></div></pre></td></tr></table></figure>
-<p>realmConfig中为了配合realmExtension，对所有表的名称以及realmConfiguration做了键值对的存储，方便我们后面增删改查使用。</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> TAG = RTRealmConfig::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>.<span class="title">simpleName</span></span></div><div class="line"><span class="keyword">private</span> <span class="keyword">var</span> configMap: MutableMap&lt;Class&lt;<span class="keyword">out</span> RealmModel&gt;, RealmConfiguration&gt; = HashMap()</div><div class="line">   </div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T : RealmModel&gt;</span> <span class="title">init</span><span class="params">(modelClass: <span class="type">Class</span>&lt;<span class="type">T</span>&gt;, realmCfg: <span class="type">RealmConfiguration</span>)</span></span> &#123;</div><div class="line">    Logger.d(TAG, <span class="string">"Adding class <span class="variable">$modelClass</span> to realm <span class="subst">$&#123;realmCfg.realmFileName&#125;</span>"</span>)</div><div class="line">    <span class="keyword">if</span> (!configMap.containsKey(modelClass)) &#123;</div><div class="line">        configMap.put(modelClass, realmCfg)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="三-基本功能"><a href="#三-基本功能" class="headerlink" title="三. 基本功能"></a>三. 基本功能</h4><ol>
-<li><p>添加</p>
-<p>如果我们没有使用RealmExtension需要这么写.</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> orderEntity  = RTOrderEntity()</div><div class="line"><span class="keyword">var</span> realmInstance = Realm.getDefaultInstance()</div><div class="line">order.orderId = <span class="string">"123"</span></div><div class="line">realmInstance.transaction &#123; realm -&gt;</div><div class="line">   realm.copyToRealmOrUpdate(orderEntity)</div><div class="line">&#125;</div><div class="line">realmInstance.close()</div></pre></td></tr></table></figure>
-<p>每次都要手动处理数据库的关闭，处理相关的事务，非常繁琐。RealmExtension把这些操作封装了一层，所以我们现在只需要这样写：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> orderEntity  = RTOrderEntity()</div><div class="line"><span class="comment">//新增了一个订单id为123的订单表</span></div><div class="line">orderEntity.orderId = <span class="string">"123"</span></div><div class="line">orderEntity.save()</div></pre></td></tr></table></figure>
-</li>
-<li><p>查询</p>
-<p>查询相比插入来说不需要在事务中操作，直接查询即可。查询是一种链式查询的方式，将查询条件拼接到后面即可，支持异步查询。平时我们使用比较多的查询有：</p>
-<ul>
-<li><code>findAll</code> ——查询所有</li>
-<li><code>findAllAsync</code>——异步查询</li>
-<li><code>findFirst</code> ——查询第一条数据</li>
-<li><code>equalTo</code> ——根据条件查询</li>
-</ul>
-<p>下面是一个简单的查询例子，具体的一些查询条件也就是</p>
-<p><a href="https://realm.io/docs/java/5.8.0/api/io/realm/RealmQuery.html" target="_blank" rel="external">RealmQuery</a> 在官网有详细的介绍。</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">orderEntity().queryAsync(&#123;</div><div class="line">               beginGroup()</div><div class="line">                  		  .isNotNull(<span class="string">"orderId"</span>)</div><div class="line">           					  .isEmpty(<span class="string">"stallCategoryCode"</span>)</div><div class="line">                       .notEqualToValue(<span class="string">"status"</span>, <span class="number">9</span>)</div><div class="line">                       .equalToValue(<span class="string">"isSale"</span>, <span class="number">1</span>)</div><div class="line">                       .not()</div><div class="line">                       .beginsWith(<span class="string">"cateringTypeString"</span>, <span class="string">"1361"</span>)</div><div class="line">                       .isNotEmpty(<span class="string">"stallCode"</span>)</div><div class="line">               endGroup()</div><div class="line">   &#125;) &#123; results -&gt;</div><div class="line">  				<span class="comment">//查询结果</span></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>删除</p>
-<p>删除也非常简单，可以删除表中所有内容或者按条件删除。</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//删除了所有订单表</span></div><div class="line">RTOrderEntity().deleteAll() </div><div class="line"><span class="comment">//删除了订单id为123的表</span></div><div class="line">RTOrderEntity().delete &#123; equalTo(<span class="string">"orderId"</span>, <span class="string">"123"</span>) &#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>修改</p>
-<p>修改和查询类似，根据相应的RealmQuery条件将某条数据查询出来之后进行修改即可。</p>
-</li>
-</ol>
-<h4 id="四-进阶功能"><a href="#四-进阶功能" class="headerlink" title="四. 进阶功能"></a>四. 进阶功能</h4><p>1.数据库备份和恢复。</p>
-<p>数据库备份的话首先需要文件的读写权限，然后备份的话首先指定一个备份的路径和备份数据库的名称，然后将当前数据库的文件通过 <code>writeCopyTo</code> 写入。具体代码如下：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> exportRealmFile: File? = <span class="literal">null</span></div><div class="line">     <span class="keyword">val</span> realm: Realm = Realm.getInstance(RealmUtils.myConfig)</div><div class="line">     Logger.d(TAG, <span class="string">"Realm DB Path = "</span> + realm.path)</div><div class="line">     <span class="keyword">try</span> &#123;</div><div class="line">         EXPORT_REALM_PATH.mkdirs()</div><div class="line">			<span class="comment">//参数1：文件路径  参数2： 文件名</span></div><div class="line">         exportRealmFile = File(EXPORT_REALM_PATH, EXPORT_REALM_FILE_NAME)</div><div class="line">         exportRealmFile.delete()</div><div class="line">         realm.writeCopyTo(exportRealmFile)</div><div class="line">     &#125; <span class="keyword">catch</span> (e: Exception) &#123;</div><div class="line">         e.printStackTrace()</div><div class="line">     &#125;</div><div class="line"></div><div class="line">     <span class="keyword">val</span> msg = <span class="string">"File exported to Path: <span class="variable">$EXPORT_REALM_PATH</span>/<span class="variable">$EXPORT_REALM_FILE_NAME</span>"</span></div></pre></td></tr></table></figure>
-<p>需要注意的事情，备份的时候要确保当前数据库没有在执行任何操作。我们可以通过一个方法 <code>Realm.getGlobalInstanceCount(RealmUtils.myConfig)</code> 来打印当前实例出来的数据库个数，只有当个数为0的时候才能进行备份操作。接下来是恢复操作，恢复同样需要先指定恢复的路径以及恢复出来的名称，然后通过 <code>outputStream</code> 和 <code>inputStream</code> 来写入文件。具体代码如下：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> file = File(context.filesDir, outFileName)</div><div class="line">Log.d(TAG, <span class="string">"context.getFilesDir() = "</span> + context.filesDir.toString())</div><div class="line"></div><div class="line"><span class="keyword">val</span> outputStream = FileOutputStream(file)</div><div class="line"><span class="keyword">val</span> inputStream = FileInputStream(File(oldFilePath))</div><div class="line"><span class="keyword">val</span> buf = ByteArray(<span class="number">1024</span>)</div><div class="line"><span class="keyword">var</span> bytesRead: <span class="built_in">Int</span></div><div class="line"></div><div class="line"><span class="keyword">while</span> (inputStream.read(buf).let &#123;</div><div class="line">     bytesRead = it; it &gt; <span class="number">0</span> &#125;) &#123;</div><div class="line">     outputStream.write(buf, <span class="number">0</span>, bytesRead)</div><div class="line">&#125;</div><div class="line"></div><div class="line">outputStream.close()</div></pre></td></tr></table></figure>
-<p>2.数据库迁移</p>
-<p>当已经发了一个版本，下个版本中某个表中要添加或者删除字段，或者要新增表的这些操作就需要升级数据库，也就是进行数据库迁移，数据库迁移需要新建 <code>RealmMigration</code> 迁移类。并且在build <code>RealmConfiguration</code>的时候指定这个迁移类。我们还是拿上边的订单表举例，新版本中需要在订单表中新增一个订单数量的字段，在迁移类中重写migrate方法，方法中有新旧版本号两个参数，可以帮助我们进行一些版本的逻辑判断。然后取到数据库的schema，它有很多方法，比如</p>
-<ul>
-<li>新增  addField</li>
-<li>重命名 renameField</li>
-<li>删除 removeField</li>
-</ul>
-<p>可以通过这些方法对表中的字段进行修改。</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">migrate</span><span class="params">(realm: <span class="type">DynamicRealm</span>, oldVersion: <span class="type">Long</span>, newVersion: <span class="type">Long</span>)</span></span> &#123;</div><div class="line">     <span class="keyword">val</span> schedulechema = realm.schema.<span class="keyword">get</span>(RTOrderEntity::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>.<span class="title">simpleName</span>)</span></div><div class="line"></div><div class="line">     schedulechema?.let &#123;</div><div class="line">         <span class="keyword">if</span> (!it.hasField(<span class="string">"orderNum"</span>))&#123;</div><div class="line">             it.addField(<span class="string">"orderNum"</span>, <span class="built_in">Long</span>.javaClass)</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>3.查看数据库的工具</p>
-<p>比较常用的realm可视化工具有 <strong>RealmStudio</strong> 和 <strong><em>Realm</em> Browser</strong>  两者大体差不多，可以直接打开数据库文件查看，并且在里面执行相应的查询筛选操作。</p>
-<p><img src="https://p.pstatp.com/origin/fe690000baca217187f0" alt=""></p>
-
       
     </div>
     
@@ -604,6 +352,70 @@
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2019/02/28/realm/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-图床迁移记录" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/01/10/图床迁移记录/" class="article-date">
+  	<time datetime="2019-01-10T12:10:43.000Z" itemprop="datePublished">2019-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/10/图床迁移记录/">图床迁移记录</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h4><p>15年开始就一直以七牛做图床，空间流量对我这个小博客来说完全够用，然鹅一年前开始，七牛收回了下发的测试域名，只能用备案的域名，我这个小域名没有备案，所以也就没办法继续使用了。所以开工吧</p>
+<h4 id="一-配置qshell账号"><a href="#一-配置qshell账号" class="headerlink" title="一. 配置qshell账号"></a>一. 配置qshell账号</h4><p>迁移的话我们需要把我们之前存储的图片导出来，七牛有一个<a href="https://developer.qiniu.com/kodo/tools/1302/qshell#2" target="_blank" rel="external">qshell</a> 可以帮助我们进行操作。先下载qshell包到本机，解压，查看是否可以正常运行。执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> qshell account ak sk</span></div></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2019/01/10/图床迁移记录/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

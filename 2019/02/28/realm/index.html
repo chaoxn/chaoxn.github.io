@@ -5,20 +5,20 @@
   
   <title>realm使用小结 | 潮汐</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一. 准备工作 Android Studio 版本大于 1.5.1 JDK 版本大于 7.0  最新的 Android SDK 版本 Android API 大于等于 9   在项目的build.gradle中配置相关信息。 123dependencies &amp;#123;    classpath &quot;io.realm:realm-gradle-plugin:6.0.1&quot;&amp;#125; 在app的bui">
+  <meta name="description" content="一. 准备工作 Android Studio 版本大于 1.5.1 JDK 版本大于 7.0  最新的 Android SDK 版本 Android API 大于等于 9   在项目的build.gradle中配置相关信息。 123dependencies &amp;#123;    classpath &quot;io.realm:realm-gradle-plugin:6.0.1&quot;&amp;#125;">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="realm使用小结">
 <meta property="og:url" content="http://chaoxn.com/2019/02/28/realm/index.html">
 <meta property="og:site_name" content="潮汐">
-<meta property="og:description" content="一. 准备工作 Android Studio 版本大于 1.5.1 JDK 版本大于 7.0  最新的 Android SDK 版本 Android API 大于等于 9   在项目的build.gradle中配置相关信息。 123dependencies &amp;#123;    classpath &quot;io.realm:realm-gradle-plugin:6.0.1&quot;&amp;#125; 在app的bui">
+<meta property="og:description" content="一. 准备工作 Android Studio 版本大于 1.5.1 JDK 版本大于 7.0  最新的 Android SDK 版本 Android API 大于等于 9   在项目的build.gradle中配置相关信息。 123dependencies &amp;#123;    classpath &quot;io.realm:realm-gradle-plugin:6.0.1&quot;&amp;#125;">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://p.pstatp.com/origin/fee60000776e3020e709">
 <meta property="og:image" content="https://p.pstatp.com/origin/fe690000baca217187f0">
-<meta property="og:updated_time" content="2019-12-24T01:35:13.116Z">
+<meta property="og:updated_time" content="2019-12-24T02:21:45.421Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="realm使用小结">
-<meta name="twitter:description" content="一. 准备工作 Android Studio 版本大于 1.5.1 JDK 版本大于 7.0  最新的 Android SDK 版本 Android API 大于等于 9   在项目的build.gradle中配置相关信息。 123dependencies &amp;#123;    classpath &quot;io.realm:realm-gradle-plugin:6.0.1&quot;&amp;#125; 在app的bui">
+<meta name="twitter:description" content="一. 准备工作 Android Studio 版本大于 1.5.1 JDK 版本大于 7.0  最新的 Android SDK 版本 Android API 大于等于 9   在项目的build.gradle中配置相关信息。 123dependencies &amp;#123;    classpath &quot;io.realm:realm-gradle-plugin:6.0.1&quot;&amp;#125;">
 <meta name="twitter:image" content="https://p.pstatp.com/origin/fee60000776e3020e709">
   
     <link rel="alternative" href="/atom.xml" title="潮汐" type="application/atom+xml">
@@ -113,7 +113,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iCoud/" style="font-size: 10px;">iCoud</a> <a href="/tags/iOS10/" style="font-size: 10px;">iOS10</a> <a href="/tags/iOS12/" style="font-size: 10px;">iOS12</a> <a href="/tags/iOS9/" style="font-size: 13.33px;">iOS9</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/学习笔记/" style="font-size: 20px;">学习笔记</a> <a href="/tags/随笔/" style="font-size: 13.33px;">随笔</a>
+						<a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iCoud/" style="font-size: 10px;">iCoud</a> <a href="/tags/iOS10/" style="font-size: 10px;">iOS10</a> <a href="/tags/iOS12/" style="font-size: 10px;">iOS12</a> <a href="/tags/iOS9/" style="font-size: 13.33px;">iOS9</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/学习笔记/" style="font-size: 20px;">学习笔记</a> <a href="/tags/随笔/" style="font-size: 16.67px;">随笔</a>
 					</div>
 				</section>
 				
@@ -220,6 +220,7 @@
 </ul>
 <p>在项目的build.gradle中配置相关信息。</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    classpath <span class="string">"io.realm:realm-gradle-plugin:6.0.1"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>在app的build.gradle中添加realm插件，并且导入realm的扩展库，方便我们使用。</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply plugin: <span class="string">'realm-android'</span></div></pre></td></tr></table></figure>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">implementation <span class="string">"com.github.vicpinm:krealmextensions:2.5.0"</span></div></pre></td></tr></table></figure>
@@ -328,8 +329,8 @@
     </a>
   
   
-    <a href="/2018/07/18/iOS12Notication/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">iOS12Notication</div>
+    <a href="/2019/01/10/图床迁移记录/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">图床迁移记录</div>
       <strong class="article-nav-caption">></strong>
     </a>
   

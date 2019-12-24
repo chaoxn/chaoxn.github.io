@@ -5,24 +5,25 @@
   
   <title>Android Maven私有库搭建 | 潮汐</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一. 环境搭建 系统信息  操作系统： Mac OS 10.14.5 Android Studio: 3.3 Kotlin: 1.3.11 Gradle: 4.10.1   安装 从官网下载最新的OSS nexus安装包，可能速度会有点慢，解压到系统的任一目录下即可, 我放到了应用程序的目录里。  启动  终端切换到nexus bin的目录下 1cd /Applications/nexus-3.1">
+  <meta name="description" content="一. 环境搭建 系统信息  操作系统： Mac OS 10.14.5 Android Studio: 3.3 Kotlin: 1.3.11 Gradle: 4.10.1   安装 从官网下载最新的OSS nexus安装包，可能速度会有点慢，解压到系统的任一目录下即可, 我放到了应用程序的目录里。">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Maven私有库搭建">
 <meta property="og:url" content="http://chaoxn.com/2019/04/15/maven/index.html">
 <meta property="og:site_name" content="潮汐">
-<meta property="og:description" content="一. 环境搭建 系统信息  操作系统： Mac OS 10.14.5 Android Studio: 3.3 Kotlin: 1.3.11 Gradle: 4.10.1   安装 从官网下载最新的OSS nexus安装包，可能速度会有点慢，解压到系统的任一目录下即可, 我放到了应用程序的目录里。  启动  终端切换到nexus bin的目录下 1cd /Applications/nexus-3.1">
+<meta property="og:description" content="一. 环境搭建 系统信息  操作系统： Mac OS 10.14.5 Android Studio: 3.3 Kotlin: 1.3.11 Gradle: 4.10.1   安装 从官网下载最新的OSS nexus安装包，可能速度会有点慢，解压到系统的任一目录下即可, 我放到了应用程序的目录里。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://github.com/chaoxn/OSS/blob/master/nexus_01.png?raw=true">
 <meta property="og:image" content="https://github.com/chaoxn/OSS/blob/master/nexus_02.png?raw=true">
 <meta property="og:image" content="https://github.com/chaoxn/OSS/blob/master/nexus_03.png?raw=true">
 <meta property="og:image" content="https://github.com/chaoxn/OSS/blob/master/nexus_04.png?raw=true">
 <meta property="og:image" content="https://github.com/chaoxn/OSS/blob/master/nexus_05.png?raw=true">
 <meta property="og:image" content="https://ae01.alicdn.com/kf/H006bc3a4c2614241b2e4c85703d98b93s.jpg">
-<meta property="og:updated_time" content="2019-12-24T01:35:44.525Z">
+<meta property="og:updated_time" content="2019-12-24T02:36:00.554Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Maven私有库搭建">
-<meta name="twitter:description" content="一. 环境搭建 系统信息  操作系统： Mac OS 10.14.5 Android Studio: 3.3 Kotlin: 1.3.11 Gradle: 4.10.1   安装 从官网下载最新的OSS nexus安装包，可能速度会有点慢，解压到系统的任一目录下即可, 我放到了应用程序的目录里。  启动  终端切换到nexus bin的目录下 1cd /Applications/nexus-3.1">
-<meta name="twitter:image" content="https://github.com/chaoxn/OSS/blob/master/nexus_02.png?raw=true">
+<meta name="twitter:description" content="一. 环境搭建 系统信息  操作系统： Mac OS 10.14.5 Android Studio: 3.3 Kotlin: 1.3.11 Gradle: 4.10.1   安装 从官网下载最新的OSS nexus安装包，可能速度会有点慢，解压到系统的任一目录下即可, 我放到了应用程序的目录里。">
+<meta name="twitter:image" content="https://github.com/chaoxn/OSS/blob/master/nexus_01.png?raw=true">
   
     <link rel="alternative" href="/atom.xml" title="潮汐" type="application/atom+xml">
   
@@ -116,7 +117,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iCoud/" style="font-size: 10px;">iCoud</a> <a href="/tags/iOS10/" style="font-size: 10px;">iOS10</a> <a href="/tags/iOS12/" style="font-size: 10px;">iOS12</a> <a href="/tags/iOS9/" style="font-size: 13.33px;">iOS9</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/学习笔记/" style="font-size: 20px;">学习笔记</a> <a href="/tags/随笔/" style="font-size: 13.33px;">随笔</a>
+						<a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iCoud/" style="font-size: 10px;">iCoud</a> <a href="/tags/iOS10/" style="font-size: 10px;">iOS10</a> <a href="/tags/iOS12/" style="font-size: 10px;">iOS12</a> <a href="/tags/iOS9/" style="font-size: 13.33px;">iOS9</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/学习笔记/" style="font-size: 20px;">学习笔记</a> <a href="/tags/随笔/" style="font-size: 16.67px;">随笔</a>
 					</div>
 				</section>
 				
@@ -226,6 +227,9 @@
 </li>
 <li><p>安装<br> 从<a href="https://www.sonatype.com/download-oss-sonatype" target="_blank" rel="external">官网</a>下载最新的OSS nexus安装包，可能速度会有点慢，解压到系统的任一目录下即可, 我放到了应用程序的目录里。</p>
 </li>
+</ol>
+<a id="more"></a>
+<ol>
 <li><p>启动</p>
 <ul>
 <li><p>终端切换到nexus bin的目录下</p>
@@ -234,10 +238,9 @@
 </ul>
 </li>
 </ol>
-<pre><code>  启动 ./nexus start
-
-![nexus_01.png](https://github.com/chaoxn/OSS/blob/master/nexus_01.png?raw=true)
-</code></pre><ol>
+<pre><code>启动 ./nexus start
+</code></pre><p><img src="https://github.com/chaoxn/OSS/blob/master/nexus_01.png?raw=true" alt="nexus_01.png"></p>
+<ol>
 <li><p>修改默认端口</p>
 <ul>
 <li><p>在nexus配置文件目录下</p>
@@ -255,10 +258,8 @@
 <li><p>如图所示点击进入repository的配置页面<br><img src="https://github.com/chaoxn/OSS/blob/master/nexus_02.png?raw=true" alt="nexus_02.png"></p>
 </li>
 <li><p>点击create开始创建，然后选择maven host<br><img src="https://github.com/chaoxn/OSS/blob/master/nexus_03.png?raw=true" alt="nexus_03.png"></p>
+<p><img src="https://github.com/chaoxn/OSS/blob/master/nexus_04.png?raw=true" alt="nexus_04.png"></p>
 </li>
-</ol>
-<p>  <img src="https://github.com/chaoxn/OSS/blob/master/nexus_04.png?raw=true" alt="nexus_04.png"></p>
-<ol>
 <li><p>进去之后输入仓库名 然后在下面的online打勾，创建完成后可以再仓库列表中见到刚刚创建的仓库</p>
 <p><img src="https://github.com/chaoxn/OSS/blob/master/nexus_05.png?raw=true" alt="nexus_05.png"></p>
 </li>

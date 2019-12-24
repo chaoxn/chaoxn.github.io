@@ -13,13 +13,13 @@
 <meta property="og:site_name" content="潮汐">
 <meta property="og:description" content="反复阅读了宇大一篇关于应用架构的文章. 不得不说宇大的这个系列文章干货十足,每次阅读都会有不同的收获, 而且也潜移默化的改变了我很多的编码风格.而且其中一些前卫的思想即时现在也不太理解. 当时对  业务方可以不用通过继承的方法，然后框架能够做到对ViewController的统一配置。业务方即使脱离框架环境，不需要修改任何代码也能够跑完代码。业务方的ViewController一旦丢入框架环境，不">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://7xnqnj.com1.z0.glb.clouddn.com/CXBlog5.pic.jpg">
-<meta property="og:image" content="http://7xnqnj.com1.z0.glb.clouddn.com/CXBlog3.pic.jpg">
-<meta property="og:updated_time" content="2015-12-14T09:15:45.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/chaoxn/OSS/master/CXBlog5.pic.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/chaoxn/OSS/master/CXBlog3.pic.jpg">
+<meta property="og:updated_time" content="2019-12-24T02:14:52.419Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="黑科技 - Method Swizzling 与 Aspects">
 <meta name="twitter:description" content="反复阅读了宇大一篇关于应用架构的文章. 不得不说宇大的这个系列文章干货十足,每次阅读都会有不同的收获, 而且也潜移默化的改变了我很多的编码风格.而且其中一些前卫的思想即时现在也不太理解. 当时对  业务方可以不用通过继承的方法，然后框架能够做到对ViewController的统一配置。业务方即使脱离框架环境，不需要修改任何代码也能够跑完代码。业务方的ViewController一旦丢入框架环境，不">
-<meta name="twitter:image" content="http://7xnqnj.com1.z0.glb.clouddn.com/CXBlog5.pic.jpg">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/chaoxn/OSS/master/CXBlog5.pic.jpg">
   
     <link rel="alternative" href="/atom.xml" title="潮汐" type="application/atom+xml">
   
@@ -113,7 +113,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iCoud/" style="font-size: 10px;">iCoud</a> <a href="/tags/iOS10/" style="font-size: 10px;">iOS10</a> <a href="/tags/iOS12/" style="font-size: 10px;">iOS12</a> <a href="/tags/iOS9/" style="font-size: 13.33px;">iOS9</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/学习笔记/" style="font-size: 20px;">学习笔记</a> <a href="/tags/随笔/" style="font-size: 13.33px;">随笔</a>
+						<a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iCoud/" style="font-size: 10px;">iCoud</a> <a href="/tags/iOS10/" style="font-size: 10px;">iOS10</a> <a href="/tags/iOS12/" style="font-size: 10px;">iOS12</a> <a href="/tags/iOS9/" style="font-size: 13.33px;">iOS9</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/学习笔记/" style="font-size: 20px;">学习笔记</a> <a href="/tags/随笔/" style="font-size: 16.67px;">随笔</a>
 					</div>
 				</section>
 				
@@ -232,10 +232,10 @@
 <li>IMP: IMP即函数指针，为方法具体实现代码块的地址，可像普通C函数调用一样使用IMP。</li>
 </ul>
 <p>所以在方法列表中通过找到对应的方法。最后一步，去实现这个方法的IMP。<br>以上是整个方法执行过程的底层实现，最后画了一张草图。</p>
-<div align="center"><br><img src="http://7xnqnj.com1.z0.glb.clouddn.com/CXBlog5.pic.jpg" width="400" alt="亦菲表演机器猫"><br></div>
+<div align="center"><br><img src="https://raw.githubusercontent.com/chaoxn/OSS/master/CXBlog5.pic.jpg" width="400" alt="亦菲表演机器猫"><br></div>
 
 <p>说了这么多然后回到我们的主题，Method Swizzling就是改变了交换了两个方法的实现，也就是交换了两个方法的IMP。看图：</p>
-<div align="center"><br><img src="http://7xnqnj.com1.z0.glb.clouddn.com/CXBlog3.pic.jpg" width="400" height="400" alt="亦菲表演机器猫"><br></div>
+<div align="center"><br><img src="https://raw.githubusercontent.com/chaoxn/OSS/master/CXBlog3.pic.jpg" width="400" height="400" alt="亦菲表演机器猫"><br></div>
 
 <p><font color="orangeRed" size="4">Method Swizzling基本用法</font></p><p></p>
 <p>然后我们就能利用这个技巧做一些想做的事，比如要在每个页面加载的时候记录一下，就可以定义一个ViewController的 类别，然后添加将要Swizzled的方法比如<code>viewWillAppear：</code>利用<code>method_exchangeImplementations</code>来交换成我们自己想要的方法。</p>

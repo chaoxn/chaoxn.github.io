@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>realm使用小结 | 潮汐</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一. 准备工作 Android Studio 版本大于 1.5.1 JDK 版本大于 7.0  最新的 Android SDK 版本 Android API 大于等于 9   在项目的build.gradle中配置相关信息。 123dependencies &amp;#123;    classpath &quot;io.realm:realm-gradle-plugin:6.0.1&quot;&amp;#125; 在app的bui">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="realm使用小结">
+<meta property="og:url" content="http://chaoxn.com/2019/02/28/realm/index.html">
+<meta property="og:site_name" content="潮汐">
+<meta property="og:description" content="一. 准备工作 Android Studio 版本大于 1.5.1 JDK 版本大于 7.0  最新的 Android SDK 版本 Android API 大于等于 9   在项目的build.gradle中配置相关信息。 123dependencies &amp;#123;    classpath &quot;io.realm:realm-gradle-plugin:6.0.1&quot;&amp;#125; 在app的bui">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://p.pstatp.com/origin/fee60000776e3020e709">
+<meta property="og:image" content="https://p.pstatp.com/origin/fe690000baca217187f0">
+<meta property="og:updated_time" content="2019-12-24T01:35:13.116Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="realm使用小结">
+<meta name="twitter:description" content="一. 准备工作 Android Studio 版本大于 1.5.1 JDK 版本大于 7.0  最新的 Android SDK 版本 Android API 大于等于 9   在项目的build.gradle中配置相关信息。 123dependencies &amp;#123;    classpath &quot;io.realm:realm-gradle-plugin:6.0.1&quot;&amp;#125; 在app的bui">
+<meta name="twitter:image" content="https://p.pstatp.com/origin/fee60000776e3020e709">
+  
+    <link rel="alternative" href="/atom.xml" title="潮汐" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://raw.githubusercontent.com/chaoxn/OSS/master/1.pic.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">潮汐</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">你梦想蓝图的每一个像素，都得你用才华和汗水填补。</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/chaoxn" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="/“#”" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="#" title="google">google</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/chaoxn" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iCoud/" style="font-size: 10px;">iCoud</a> <a href="/tags/iOS10/" style="font-size: 10px;">iOS10</a> <a href="/tags/iOS12/" style="font-size: 10px;">iOS12</a> <a href="/tags/iOS9/" style="font-size: 13.33px;">iOS9</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/学习笔记/" style="font-size: 20px;">学习笔记</a> <a href="/tags/随笔/" style="font-size: 13.33px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我就是我</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">潮汐</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://raw.githubusercontent.com/chaoxn/OSS/master/1.pic.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">潮汐</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">你梦想蓝图的每一个像素，都得你用才华和汗水填补。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/chaoxn" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="/“#”" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="#" title="google">google</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/chaoxn" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-realm" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/02/28/realm/" class="article-date">
+  	<time datetime="2019-02-28T08:38:46.000Z" itemprop="datePublished">2019-02-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      realm使用小结
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一-准备工作"><a href="#一-准备工作" class="headerlink" title="一. 准备工作"></a>一. 准备工作</h4><ul>
+<li>Android Studio 版本大于 1.5.1</li>
+<li>JDK 版本大于 7.0 </li>
+<li>最新的 Android SDK 版本</li>
+<li>Android API 大于等于 9 </li>
+</ul>
+<p>在项目的build.gradle中配置相关信息。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    classpath <span class="string">"io.realm:realm-gradle-plugin:6.0.1"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在app的build.gradle中添加realm插件，并且导入realm的扩展库，方便我们使用。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply plugin: <span class="string">'realm-android'</span></div></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">implementation <span class="string">"com.github.vicpinm:krealmextensions:2.5.0"</span></div></pre></td></tr></table></figure>
+<h4 id="二-初始化及配置"><a href="#二-初始化及配置" class="headerlink" title="二. 初始化及配置"></a>二. 初始化及配置</h4><ol>
+<li>初始化数据库</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Realm.init(context);</div></pre></td></tr></table></figure>
+<ol>
+<li><p>配置数据库</p>
+<p>可以通过修改realm的RealmConfiguration来对reaml进行配置。几个比较常用的配置：</p>
+<ul>
+<li><p>name : 指定数据库的名称。如不指定默认名为default</p>
+</li>
+<li><p>schemaVersion : 指定数据库的版本号。</p>
+</li>
+<li><p>encryptionKey : 指定数据库的密钥。</p>
+</li>
+<li><p>migration: 指定迁移操作的迁移类。</p>
+</li>
+<li><p>deleteRealmIfMigrationNeeded : 版本冲突时自动删除原数据库。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://p.pstatp.com/origin/fee60000776e3020e709" alt=""></p>
+<ol>
+<li><p>建表</p>
+<p>创建model类，继承自RealmObject，realm支持<code>boolean</code>, <code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>, <code>float</code>, <code>double</code>, <code>String</code>, <code>Date</code> and <code>byte[]</code> 以及realmObject子类等类型。 几种常用的注解：</p>
+<ul>
+<li><code>@PrimaryKey</code>——表示该字段是主键</li>
+<li><code>@Required</code>——表示该字段非空</li>
+<li><code>@Ignore</code>——表示忽略该字段</li>
+<li><code>@Index</code>——添加搜索索引</li>
+</ul>
+</li>
+</ol>
+<p>以下是一个订单表的简单示例。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">RTOrderEntity</span> : <span class="type">RealmObject</span></span>() &#123;</div><div class="line"></div><div class="line">    <span class="meta">@PrimaryKey</span></div><div class="line">    <span class="keyword">var</span> orderId: String? = <span class="literal">null</span>  <span class="comment">// 订单号</span></div><div class="line"></div><div class="line">    <span class="meta">@Required</span></div><div class="line">    <span class="keyword">var</span> dutyCode: String? = <span class="string">""</span> <span class="comment">// 班次号</span></div><div class="line"></div><div class="line">    <span class="keyword">var</span> orderPaymentStatus: <span class="built_in">Int</span>? = <span class="number">0</span> <span class="comment">//0未支付,1已支付,2部分支付</span></div><div class="line"></div><div class="line">    <span class="keyword">var</span> payChannels: RealmList&lt;RTPayChanelEntity&gt;? = <span class="literal">null</span> <span class="comment">//支付方式列表</span></div><div class="line"></div><div class="line">    <span class="keyword">var</span> payTime: <span class="built_in">Long</span>? = <span class="literal">null</span> <span class="comment">//成交时间</span></div><div class="line">    ...</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<ol>
+<li><p>将表配置到数据库中。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// config参数为之前配置的realmConfiguration</span></div><div class="line">RTRealmConfig.init(RTOrderEntity::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>, <span class="type">myConfig)</span></span></div></pre></td></tr></table></figure>
+<p>realmConfig中为了配合realmExtension，对所有表的名称以及realmConfiguration做了键值对的存储，方便我们后面增删改查使用。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> TAG = RTRealmConfig::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>.<span class="title">simpleName</span></span></div><div class="line"><span class="keyword">private</span> <span class="keyword">var</span> configMap: MutableMap&lt;Class&lt;<span class="keyword">out</span> RealmModel&gt;, RealmConfiguration&gt; = HashMap()</div><div class="line">   </div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T : RealmModel&gt;</span> <span class="title">init</span><span class="params">(modelClass: <span class="type">Class</span>&lt;<span class="type">T</span>&gt;, realmCfg: <span class="type">RealmConfiguration</span>)</span></span> &#123;</div><div class="line">    Logger.d(TAG, <span class="string">"Adding class <span class="variable">$modelClass</span> to realm <span class="subst">$&#123;realmCfg.realmFileName&#125;</span>"</span>)</div><div class="line">    <span class="keyword">if</span> (!configMap.containsKey(modelClass)) &#123;</div><div class="line">        configMap.put(modelClass, realmCfg)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="三-基本功能"><a href="#三-基本功能" class="headerlink" title="三. 基本功能"></a>三. 基本功能</h4><ol>
+<li><p>添加</p>
+<p>如果我们没有使用RealmExtension需要这么写.</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> orderEntity  = RTOrderEntity()</div><div class="line"><span class="keyword">var</span> realmInstance = Realm.getDefaultInstance()</div><div class="line">order.orderId = <span class="string">"123"</span></div><div class="line">realmInstance.transaction &#123; realm -&gt;</div><div class="line">   realm.copyToRealmOrUpdate(orderEntity)</div><div class="line">&#125;</div><div class="line">realmInstance.close()</div></pre></td></tr></table></figure>
+<p>每次都要手动处理数据库的关闭，处理相关的事务，非常繁琐。RealmExtension把这些操作封装了一层，所以我们现在只需要这样写：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> orderEntity  = RTOrderEntity()</div><div class="line"><span class="comment">//新增了一个订单id为123的订单表</span></div><div class="line">orderEntity.orderId = <span class="string">"123"</span></div><div class="line">orderEntity.save()</div></pre></td></tr></table></figure>
+</li>
+<li><p>查询</p>
+<p>查询相比插入来说不需要在事务中操作，直接查询即可。查询是一种链式查询的方式，将查询条件拼接到后面即可，支持异步查询。平时我们使用比较多的查询有：</p>
+<ul>
+<li><code>findAll</code> ——查询所有</li>
+<li><code>findAllAsync</code>——异步查询</li>
+<li><code>findFirst</code> ——查询第一条数据</li>
+<li><code>equalTo</code> ——根据条件查询</li>
+</ul>
+<p>下面是一个简单的查询例子，具体的一些查询条件也就是</p>
+<p><a href="https://realm.io/docs/java/5.8.0/api/io/realm/RealmQuery.html" target="_blank" rel="external">RealmQuery</a> 在官网有详细的介绍。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">orderEntity().queryAsync(&#123;</div><div class="line">               beginGroup()</div><div class="line">                  		  .isNotNull(<span class="string">"orderId"</span>)</div><div class="line">           					  .isEmpty(<span class="string">"stallCategoryCode"</span>)</div><div class="line">                       .notEqualToValue(<span class="string">"status"</span>, <span class="number">9</span>)</div><div class="line">                       .equalToValue(<span class="string">"isSale"</span>, <span class="number">1</span>)</div><div class="line">                       .not()</div><div class="line">                       .beginsWith(<span class="string">"cateringTypeString"</span>, <span class="string">"1361"</span>)</div><div class="line">                       .isNotEmpty(<span class="string">"stallCode"</span>)</div><div class="line">               endGroup()</div><div class="line">   &#125;) &#123; results -&gt;</div><div class="line">  				<span class="comment">//查询结果</span></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除</p>
+<p>删除也非常简单，可以删除表中所有内容或者按条件删除。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//删除了所有订单表</span></div><div class="line">RTOrderEntity().deleteAll() </div><div class="line"><span class="comment">//删除了订单id为123的表</span></div><div class="line">RTOrderEntity().delete &#123; equalTo(<span class="string">"orderId"</span>, <span class="string">"123"</span>) &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改</p>
+<p>修改和查询类似，根据相应的RealmQuery条件将某条数据查询出来之后进行修改即可。</p>
+</li>
+</ol>
+<h4 id="四-进阶功能"><a href="#四-进阶功能" class="headerlink" title="四. 进阶功能"></a>四. 进阶功能</h4><p>1.数据库备份和恢复。</p>
+<p>数据库备份的话首先需要文件的读写权限，然后备份的话首先指定一个备份的路径和备份数据库的名称，然后将当前数据库的文件通过 <code>writeCopyTo</code> 写入。具体代码如下：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> exportRealmFile: File? = <span class="literal">null</span></div><div class="line">     <span class="keyword">val</span> realm: Realm = Realm.getInstance(RealmUtils.myConfig)</div><div class="line">     Logger.d(TAG, <span class="string">"Realm DB Path = "</span> + realm.path)</div><div class="line">     <span class="keyword">try</span> &#123;</div><div class="line">         EXPORT_REALM_PATH.mkdirs()</div><div class="line">			<span class="comment">//参数1：文件路径  参数2： 文件名</span></div><div class="line">         exportRealmFile = File(EXPORT_REALM_PATH, EXPORT_REALM_FILE_NAME)</div><div class="line">         exportRealmFile.delete()</div><div class="line">         realm.writeCopyTo(exportRealmFile)</div><div class="line">     &#125; <span class="keyword">catch</span> (e: Exception) &#123;</div><div class="line">         e.printStackTrace()</div><div class="line">     &#125;</div><div class="line"></div><div class="line">     <span class="keyword">val</span> msg = <span class="string">"File exported to Path: <span class="variable">$EXPORT_REALM_PATH</span>/<span class="variable">$EXPORT_REALM_FILE_NAME</span>"</span></div></pre></td></tr></table></figure>
+<p>需要注意的事情，备份的时候要确保当前数据库没有在执行任何操作。我们可以通过一个方法 <code>Realm.getGlobalInstanceCount(RealmUtils.myConfig)</code> 来打印当前实例出来的数据库个数，只有当个数为0的时候才能进行备份操作。接下来是恢复操作，恢复同样需要先指定恢复的路径以及恢复出来的名称，然后通过 <code>outputStream</code> 和 <code>inputStream</code> 来写入文件。具体代码如下：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> file = File(context.filesDir, outFileName)</div><div class="line">Log.d(TAG, <span class="string">"context.getFilesDir() = "</span> + context.filesDir.toString())</div><div class="line"></div><div class="line"><span class="keyword">val</span> outputStream = FileOutputStream(file)</div><div class="line"><span class="keyword">val</span> inputStream = FileInputStream(File(oldFilePath))</div><div class="line"><span class="keyword">val</span> buf = ByteArray(<span class="number">1024</span>)</div><div class="line"><span class="keyword">var</span> bytesRead: <span class="built_in">Int</span></div><div class="line"></div><div class="line"><span class="keyword">while</span> (inputStream.read(buf).let &#123;</div><div class="line">     bytesRead = it; it &gt; <span class="number">0</span> &#125;) &#123;</div><div class="line">     outputStream.write(buf, <span class="number">0</span>, bytesRead)</div><div class="line">&#125;</div><div class="line"></div><div class="line">outputStream.close()</div></pre></td></tr></table></figure>
+<p>2.数据库迁移</p>
+<p>当已经发了一个版本，下个版本中某个表中要添加或者删除字段，或者要新增表的这些操作就需要升级数据库，也就是进行数据库迁移，数据库迁移需要新建 <code>RealmMigration</code> 迁移类。并且在build <code>RealmConfiguration</code>的时候指定这个迁移类。我们还是拿上边的订单表举例，新版本中需要在订单表中新增一个订单数量的字段，在迁移类中重写migrate方法，方法中有新旧版本号两个参数，可以帮助我们进行一些版本的逻辑判断。然后取到数据库的schema，它有很多方法，比如</p>
+<ul>
+<li>新增  addField</li>
+<li>重命名 renameField</li>
+<li>删除 removeField</li>
+</ul>
+<p>可以通过这些方法对表中的字段进行修改。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">migrate</span><span class="params">(realm: <span class="type">DynamicRealm</span>, oldVersion: <span class="type">Long</span>, newVersion: <span class="type">Long</span>)</span></span> &#123;</div><div class="line">     <span class="keyword">val</span> schedulechema = realm.schema.<span class="keyword">get</span>(RTOrderEntity::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>.<span class="title">simpleName</span>)</span></div><div class="line"></div><div class="line">     schedulechema?.let &#123;</div><div class="line">         <span class="keyword">if</span> (!it.hasField(<span class="string">"orderNum"</span>))&#123;</div><div class="line">             it.addField(<span class="string">"orderNum"</span>, <span class="built_in">Long</span>.javaClass)</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>3.查看数据库的工具</p>
+<p>比较常用的realm可视化工具有 <strong>RealmStudio</strong> 和 <strong><em>Realm</em> Browser</strong>  两者大体差不多，可以直接打开数据库文件查看，并且在里面执行相应的查询筛选操作。</p>
+<p><img src="https://p.pstatp.com/origin/fe690000baca217187f0" alt=""></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/04/15/maven/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Android Maven私有库搭建
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/18/iOS12Notication/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS12Notication</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'chaoxn'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+</div>
+      <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2019 潮汐
+    	</div>
+<span id="busuanzi_container_site_pv">
+    您是第<span id="busuanzi_value_site_pv"></span>位访客
+</span>
+      	<div class="footer-right">
+      		<a>ChaoX</a>
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

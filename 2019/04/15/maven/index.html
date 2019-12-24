@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android Maven私有库搭建 | 潮汐</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一. 环境搭建 系统信息  操作系统： Mac OS 10.14.5 Android Studio: 3.3 Kotlin: 1.3.11 Gradle: 4.10.1   安装 从官网下载最新的OSS nexus安装包，可能速度会有点慢，解压到系统的任一目录下即可, 我放到了应用程序的目录里。  启动  终端切换到nexus bin的目录下 1cd /Applications/nexus-3.1">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Maven私有库搭建">
+<meta property="og:url" content="http://chaoxn.com/2019/04/15/maven/index.html">
+<meta property="og:site_name" content="潮汐">
+<meta property="og:description" content="一. 环境搭建 系统信息  操作系统： Mac OS 10.14.5 Android Studio: 3.3 Kotlin: 1.3.11 Gradle: 4.10.1   安装 从官网下载最新的OSS nexus安装包，可能速度会有点慢，解压到系统的任一目录下即可, 我放到了应用程序的目录里。  启动  终端切换到nexus bin的目录下 1cd /Applications/nexus-3.1">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://github.com/chaoxn/OSS/blob/master/nexus_02.png?raw=true">
+<meta property="og:image" content="https://github.com/chaoxn/OSS/blob/master/nexus_03.png?raw=true">
+<meta property="og:image" content="https://github.com/chaoxn/OSS/blob/master/nexus_04.png?raw=true">
+<meta property="og:image" content="https://github.com/chaoxn/OSS/blob/master/nexus_05.png?raw=true">
+<meta property="og:image" content="https://ae01.alicdn.com/kf/H006bc3a4c2614241b2e4c85703d98b93s.jpg">
+<meta property="og:updated_time" content="2019-12-24T01:35:44.525Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Maven私有库搭建">
+<meta name="twitter:description" content="一. 环境搭建 系统信息  操作系统： Mac OS 10.14.5 Android Studio: 3.3 Kotlin: 1.3.11 Gradle: 4.10.1   安装 从官网下载最新的OSS nexus安装包，可能速度会有点慢，解压到系统的任一目录下即可, 我放到了应用程序的目录里。  启动  终端切换到nexus bin的目录下 1cd /Applications/nexus-3.1">
+<meta name="twitter:image" content="https://github.com/chaoxn/OSS/blob/master/nexus_02.png?raw=true">
+  
+    <link rel="alternative" href="/atom.xml" title="潮汐" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://raw.githubusercontent.com/chaoxn/OSS/master/1.pic.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">潮汐</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">你梦想蓝图的每一个像素，都得你用才华和汗水填补。</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/chaoxn" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="/“#”" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="#" title="google">google</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/chaoxn" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iCoud/" style="font-size: 10px;">iCoud</a> <a href="/tags/iOS10/" style="font-size: 10px;">iOS10</a> <a href="/tags/iOS12/" style="font-size: 10px;">iOS12</a> <a href="/tags/iOS9/" style="font-size: 13.33px;">iOS9</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/学习笔记/" style="font-size: 20px;">学习笔记</a> <a href="/tags/随笔/" style="font-size: 13.33px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我就是我</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">潮汐</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://raw.githubusercontent.com/chaoxn/OSS/master/1.pic.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">潮汐</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">你梦想蓝图的每一个像素，都得你用才华和汗水填补。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/chaoxn" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="/“#”" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="#" title="google">google</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/chaoxn" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-maven" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/04/15/maven/" class="article-date">
+  	<time datetime="2019-04-15T13:43:21.000Z" itemprop="datePublished">2019-04-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android Maven私有库搭建
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一-环境搭建"><a href="#一-环境搭建" class="headerlink" title="一. 环境搭建"></a>一. 环境搭建</h4><ol>
+<li><p>系统信息</p>
+<ul>
+<li>操作系统： Mac OS 10.14.5</li>
+<li>Android Studio: 3.3</li>
+<li>Kotlin: 1.3.11</li>
+<li>Gradle: 4.10.1</li>
+</ul>
+</li>
+<li><p>安装<br> 从<a href="https://www.sonatype.com/download-oss-sonatype" target="_blank" rel="external">官网</a>下载最新的OSS nexus安装包，可能速度会有点慢，解压到系统的任一目录下即可, 我放到了应用程序的目录里。</p>
+</li>
+<li><p>启动</p>
+<ul>
+<li><p>终端切换到nexus bin的目录下</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /Applications/nexus<span class="number">-3.17</span><span class="number">.0</span><span class="number">-01</span>-mac/nexus<span class="number">-3.17</span><span class="number">.0</span><span class="number">-01</span>/bin</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>  启动 ./nexus start
+
+![nexus_01.png](https://github.com/chaoxn/OSS/blob/master/nexus_01.png?raw=true)
+</code></pre><ol>
+<li><p>修改默认端口</p>
+<ul>
+<li><p>在nexus配置文件目录下</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Applications/nexus<span class="number">-3.17</span><span class="number">.0</span><span class="number">-01</span>-mac/sonatype-work/nexus3/etc</div></pre></td></tr></table></figure>
+</li>
+<li><p>找到配置文件 nexus.properties 修改application-port 为 8088</p>
+</li>
+<li>重新启动nexus ./nexus restart</li>
+</ul>
+</li>
+</ol>
+<h4 id="二-Maven仓库配置"><a href="#二-Maven仓库配置" class="headerlink" title="二. Maven仓库配置"></a>二. Maven仓库配置</h4><ol>
+<li><p>浏览器进入 <a href="[http://localhost:8081](http://localhost:8081/">管理页面</a>) , 通过默认的admin账号 admin123密码登录。 也有可能你的密码在/Applications/nexus-3.17.0-01-mac/sonatype-work/nexus3/password 这个路径里，去取一下就好</p>
+</li>
+<li><p>如图所示点击进入repository的配置页面<br><img src="https://github.com/chaoxn/OSS/blob/master/nexus_02.png?raw=true" alt="nexus_02.png"></p>
+</li>
+<li><p>点击create开始创建，然后选择maven host<br><img src="https://github.com/chaoxn/OSS/blob/master/nexus_03.png?raw=true" alt="nexus_03.png"></p>
+</li>
+</ol>
+<p>  <img src="https://github.com/chaoxn/OSS/blob/master/nexus_04.png?raw=true" alt="nexus_04.png"></p>
+<ol>
+<li><p>进去之后输入仓库名 然后在下面的online打勾，创建完成后可以再仓库列表中见到刚刚创建的仓库</p>
+<p><img src="https://github.com/chaoxn/OSS/blob/master/nexus_05.png?raw=true" alt="nexus_05.png"></p>
+</li>
+</ol>
+<h4 id="三-宿主工程-私有库Module设置"><a href="#三-宿主工程-私有库Module设置" class="headerlink" title="三. 宿主工程 私有库Module设置"></a>三. 宿主工程 私有库Module设置</h4><p>​    示例说明: 以封装自定义“私有库 rtlogger”为例</p>
+<ol>
+<li><p>新建宿主工程 RTLoggerLibHost</p>
+</li>
+<li><p>新建 module: rtlogger</p>
+<p>File-&gt;New-&gt;New Module-&gt;Android Library 设置 module 信息: </p>
+<p>Application/Library name: rtlogger Module name: rtlogger<br> Package name: com.rtmart.lib.rtlogger </p>
+<p>完成后,可看到宿主工程下看到新增的“rtlogger module”: </p>
+<p><img src="https://ae01.alicdn.com/kf/H006bc3a4c2614241b2e4c85703d98b93s.jpg" alt=""></p>
+</li>
+<li><p>宿主工程, build.gradle 配置<br>指明支持 maven 私有仓库:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">allprojects</span>&#123;</div><div class="line">       <span class="selector-tag">repositories</span>&#123;</div><div class="line">         <span class="selector-tag">google</span>()</div><div class="line">         <span class="selector-tag">jcenter</span>()</div><div class="line">         <span class="comment">//需要添加的</span></div><div class="line">         <span class="selector-tag">mavenLocal</span>()</div><div class="line">	&#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>rtlogger module, build gradle 配置</p>
+<p>主要包括 3 个部分:</p>
+<p>1&gt; 对 kotlin 的支持,如果封装的私有库中,包含了 kotlin 代码,必须添加此配置,否则,虽然也会打包发布成功,但是外部用私有库时,只能获取到 java 类,所有 kotlin 类均无法获取.</p>
+<p>2&gt; 对 maven 的支持</p>
+<p>3&gt; maven 仓库信息、私有库打包发布配置</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//需要添加的 1:支持 kotlin</span></div><div class="line">apply <span class="string">plugin:</span><span class="string">'kotlin-android-extensions'</span></div><div class="line">apply <span class="string">plugin:</span><span class="string">'kotlin-android'</span></div><div class="line"></div><div class="line"><span class="comment">//需要添加的 2:支持 maven 仓库</span></div><div class="line">apply <span class="string">plugin:</span> <span class="string">'maven'</span></div><div class="line"></div><div class="line"><span class="comment">//需要添加的 3:发布配置</span></div><div class="line">   uploadArchives&#123;</div><div class="line">       repositories.mavenDeployer&#123;</div><div class="line"> 			<span class="comment">//仓库地址 + 账户</span></div><div class="line">      repository(<span class="string">url:</span><span class="string">"http://10.200.244.100:8088/repository/MavenTest_chaox/"</span>)&#123;</div><div class="line">      	authentication(<span class="string">userName:</span><span class="string">"admin"</span>,<span class="string">password:</span><span class="string">"admin123"</span>)</div><div class="line">      &#125;         </div><div class="line">      <span class="comment">//私有库信息</span></div><div class="line">       pom.version=<span class="string">"1.0.0"</span></div><div class="line">       pom.artifactId=<span class="string">"rtlogger"</span>        </div><div class="line">			 pom.groupId=<span class="string">"com.rtmart.lib"</span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">dependencies&#123;</div><div class="line"><span class="comment">//需要添加的支持kotlin</span></div><div class="line">		implementation <span class="string">"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>私有库 module 的 AndroidManifest.xml 配置 </p>
+<p>如果私有库内,使用了一些系统权限(eg: 网络状态访问)、activity 等资源需在此配 置.</p>
+</li>
+<li><p>rtlogger 私有库内部代码，简单起见,只定义一个打印 class:</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RTLogger</span> </span>&#123;</div><div class="line">		<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> log(String <span class="keyword">str</span>)&#123;</div><div class="line">				Log.i(<span class="string">"RTLogger"</span>, <span class="keyword">str</span>);</div><div class="line">		&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>发布 View-&gt;Tool Window-&gt;Gradle-&gt;RTLoggerLibHost-&gt;:rtlogger-&gt;Tasks-&gt;upload<br>-&gt;uploadArchives-&gt; run RTLoggerLibHost:rtlogger</p>
+</li>
+<li><p>完成之后,可从 maven 仓库的 rtrepo 下找到 rtlogger 私有库</p>
+</li>
+</ol>
+<p>四。应用工程引用私有库</p>
+<p>​        新建项目，项目的gradle配置需要添加的maven，app gradle添加对私有库的依赖。然后代码中可以使用。</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> allprojects&#123;</div><div class="line">     repositories&#123;</div><div class="line">       google()</div><div class="line">       jcenter()    </div><div class="line">       maven &#123; url <span class="string">"http://10.200.244.100:8088/repository/MavenTest_chaox/"</span>&#125;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/06/21/leak/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          安卓内存泄漏检测及原因分析
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/28/realm/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">realm使用小结</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'chaoxn'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+</div>
+      <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2019 潮汐
+    	</div>
+<span id="busuanzi_container_site_pv">
+    您是第<span id="busuanzi_value_site_pv"></span>位访客
+</span>
+      	<div class="footer-right">
+      		<a>ChaoX</a>
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

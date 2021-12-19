@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>rxswift 学习笔记 | 潮汐</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一.基本介绍1.命令式编程 vs 响应式编程 目前大部分面向对象语言都是命令式的编程范式，即通过代码下达命令给系统；虽然可以通过各种技术手段知道数据的变化，但是不能做到自动化地通知。 响应式编程则是想让数据的变化可以自动地通知，你不再需要关心特定状态，这个状态通知到响应的过程，响应式编程（库）已经帮你处理了  2.响应式编程RX是一种基于变化产生过程的编程范式。简单来说，就是当某些改变发生的时候，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rxswift 学习笔记">
+<meta property="og:url" content="http://chaoxn.com/2021/12/18/rxswift/index.html">
+<meta property="og:site_name" content="潮汐">
+<meta property="og:description" content="一.基本介绍1.命令式编程 vs 响应式编程 目前大部分面向对象语言都是命令式的编程范式，即通过代码下达命令给系统；虽然可以通过各种技术手段知道数据的变化，但是不能做到自动化地通知。 响应式编程则是想让数据的变化可以自动地通知，你不再需要关心特定状态，这个状态通知到响应的过程，响应式编程（库）已经帮你处理了  2.响应式编程RX是一种基于变化产生过程的编程范式。简单来说，就是当某些改变发生的时候，">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xNjA5MzY5LTM0OGIyZGU3YjVhNTEyNWIucG5n">
+<meta property="og:image" content="https://beeth0ven.github.io/RxSwift-Chinese-Documentation/assets/RxSwiftCore.png">
+<meta property="og:updated_time" content="2021-12-18T08:38:48.166Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="rxswift 学习笔记">
+<meta name="twitter:description" content="一.基本介绍1.命令式编程 vs 响应式编程 目前大部分面向对象语言都是命令式的编程范式，即通过代码下达命令给系统；虽然可以通过各种技术手段知道数据的变化，但是不能做到自动化地通知。 响应式编程则是想让数据的变化可以自动地通知，你不再需要关心特定状态，这个状态通知到响应的过程，响应式编程（库）已经帮你处理了  2.响应式编程RX是一种基于变化产生过程的编程范式。简单来说，就是当某些改变发生的时候，">
+<meta name="twitter:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xNjA5MzY5LTM0OGIyZGU3YjVhNTEyNWIucG5n">
+  
+    <link rel="alternative" href="/atom.xml" title="潮汐" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://raw.githubusercontent.com/chaoxn/OSS/master/1.pic.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">潮汐</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">你梦想蓝图的每一个像素，都得你用才华和汗水填补。</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/chaoxn" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="/“#”" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="#" title="google">google</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/chaoxn" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iCoud/" style="font-size: 10px;">iCoud</a> <a href="/tags/iOS10/" style="font-size: 10px;">iOS10</a> <a href="/tags/iOS12/" style="font-size: 10px;">iOS12</a> <a href="/tags/iOS9/" style="font-size: 13.33px;">iOS9</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/学习笔记/" style="font-size: 20px;">学习笔记</a> <a href="/tags/随笔/" style="font-size: 16.67px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我就是我</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">潮汐</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://raw.githubusercontent.com/chaoxn/OSS/master/1.pic.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">潮汐</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">你梦想蓝图的每一个像素，都得你用才华和汗水填补。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/chaoxn" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="/“#”" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="#" title="google">google</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/chaoxn" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-rxswift" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/12/18/rxswift/" class="article-date">
+  	<time datetime="2021-12-18T08:09:31.000Z" itemprop="datePublished">2021-12-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      rxswift 学习笔记
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一-基本介绍"><a href="#一-基本介绍" class="headerlink" title="一.基本介绍"></a>一.基本介绍</h2><h4 id="1-命令式编程-vs-响应式编程"><a href="#1-命令式编程-vs-响应式编程" class="headerlink" title="1.命令式编程 vs 响应式编程"></a>1.<strong>命令式编程 vs 响应式编程</strong></h4><ol>
+<li>目前大部分面向对象语言都是命令式的编程范式，即通过代码下达命令给系统；虽然可以通过各种技术手段知道数据的变化，但是不能做到自动化地通知。</li>
+<li>响应式编程则是想让数据的变化可以自动地通知，你不再需要关心特定状态，这个状态通知到响应的过程，响应式编程（库）已经帮你处理了</li>
+</ol>
+<h4 id="2-响应式编程"><a href="#2-响应式编程" class="headerlink" title="2.响应式编程"></a>2.响应式编程</h4><p>RX是一种基于变化产生过程的编程范式。简单来说，就是当某些改变发生的时候，依赖这些改变的对象如何得到通知以及如何响应这些改变。传统的编程方式的思路，是基于通知和处理过程的。因此，我们会指定delegate，实现对应的callback方法，当App和用户的交互日益频繁和复杂，特别是如果一个用户交互需要引发一连串的UI响应时，这样的思维方式就会让代码变得凌乱和繁杂。</p>
+<ul>
+<li>复合 - Rx 就是复合的代名词</li>
+<li>复用 - 因为它易复合</li>
+<li>清晰 - 因为声明都是不可变更的</li>
+<li>易用 - 因为它抽象的了异步编程，使我们统一了代码风格</li>
+<li>稳定 - 因为 Rx 是完全通过单元测试的<a id="more"></a>
+</li>
+</ul>
+<h4 id="3-响应式编程库现状"><a href="#3-响应式编程库现状" class="headerlink" title="3.响应式编程库现状"></a>3.响应式编程库现状</h4><p>目前分为两派</p>
+<ul>
+<li>​        ReactiveX主导的rx系列库，语言支持如RxSwift, RxKotlin, 平台支持如RxAndroid, RxCocoa</li>
+<li>​        ReactiveCocoa(GitHub发起)库，语言仅支持swift，objective-c，平台仅支持iOS</li>
+</ul>
+<p>相同点：</p>
+<ul>
+<li>​        都是Reactive Functional Programming（响应式函数编程）的实现</li>
+<li>​        二者github star数不分伯仲，均接近20k级别</li>
+<li>​        都有很好的社区支持</li>
+</ul>
+<p>不同点：</p>
+<ul>
+<li>​        Hot、Code Signal实现API不同：RAC设计了两个api分别对应hot、code signal，RxSwift仅有一个</li>
+<li>​        错误处理，RAC相对容易一些</li>
+<li>​        UI Bindings，RAC有不少历史包袱，RxSwift则更容易使用</li>
+<li>​        Rx系列支持更多语言和平台</li>
+</ul>
+<h4 id="4-RxSwift-整体架构图"><a href="#4-RxSwift-整体架构图" class="headerlink" title="4.RxSwift 整体架构图"></a>4.RxSwift 整体架构图</h4><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xNjA5MzY5LTM0OGIyZGU3YjVhNTEyNWIucG5n" alt="RxSwift.png"></p>
+<h2 id="二-RxSwift-核心"><a href="#二-RxSwift-核心" class="headerlink" title="二.RxSwift 核心"></a>二.RxSwift 核心</h2><p><img src="https://beeth0ven.github.io/RxSwift-Chinese-Documentation/assets/RxSwiftCore.png" alt="img"></p>
+<p>RxSwift重要有下面几大重要的模块。</p>
+<ul>
+<li>Observable - 可监听序列，产生事件</li>
+<li>Observer - 观察者，响应事件</li>
+<li>Operator- 操作符，创建变化组合事件</li>
+<li>Disposable - 可以被清除的资源， 管理绑定（订阅）的生命周期</li>
+<li>Schedulers - 调度器，线程队列调配</li>
+</ul>
+<h4 id="1-Observable"><a href="#1-Observable" class="headerlink" title="1. Observable"></a>1. Observable</h4><p>RxSwift中的核心类就是Observable，它就像一个路由器一样把事件转换成信号发给订阅者！其实现思路类似于通知，但通知属于其子集，几种创建序列的方式</p>
+<ul>
+<li>just ：创建单个元素/事件的可观测序列</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="type">Observable</span>.just(<span class="string">"JustDemo"</span>)</div><div class="line">        .subscribe &#123; event <span class="keyword">in</span></div><div class="line">            <span class="built_in">print</span>(event)</div><div class="line">        &#125;</div><div class="line">        .disposed(by: disposeBag)</div></pre></td></tr></table></figure>
+<ul>
+<li>of：创建包含多个元素的可观测序列-</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="type">Observable</span>.of(<span class="string">"1"</span>, <span class="string">"2"</span>, <span class="string">"3"</span>, <span class="string">"4"</span>)</div><div class="line">        .subscribe(onNext: &#123; element <span class="keyword">in</span></div><div class="line">            <span class="built_in">print</span>(element)</div><div class="line">        &#125;)</div><div class="line">        .disposed(by: disposeBag)</div></pre></td></tr></table></figure>
+<ul>
+<li>from：创建包含一个集合的可观测序列，集合可以是Array，Dictionary，Se</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="type">Observable</span>.from([<span class="string">"1"</span>, <span class="string">"2"</span>, <span class="string">"3"</span>, <span class="string">"4"</span>])</div><div class="line">        .subscribe(onNext: &#123; <span class="built_in">print</span>($<span class="number">0</span>) &#125;)</div><div class="line">        .disposed(by: disposeBag)</div></pre></td></tr></table></figure>
+<ul>
+<li>create：通过传入的元素来创建可观测序列</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> myJust = &#123; (element: <span class="type">String</span>) -&gt; <span class="type">Observable</span>&lt;<span class="type">String</span>&gt; <span class="keyword">in</span></div><div class="line">          <span class="keyword">return</span> <span class="type">Observable</span>.create &#123; observer <span class="keyword">in</span></div><div class="line">              observer.on(.next(element))</div><div class="line">              observer.on(.completed)</div><div class="line">              <span class="keyword">return</span> <span class="type">Disposables</span>.create()</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 创建一个可观测序列</span></div><div class="line">    <span class="keyword">let</span> newObserver = myJust(<span class="string">"create demo"</span>)</div><div class="line">    <span class="comment">// 订阅观测序列</span></div><div class="line">    newObserver.subscribe &#123;[<span class="keyword">weak</span> <span class="keyword">self</span>] <span class="keyword">in</span></div><div class="line">        <span class="keyword">self</span>?.showAlert(value: $<span class="number">0</span>)</div><div class="line">    &#125;.disposed(by: disposeBag)</div></pre></td></tr></table></figure>
+<h4 id="2-Observe"><a href="#2-Observe" class="headerlink" title="2. Observe"></a>2. Observe</h4><p><strong>观察者</strong> 是用来监听事件，然后它需要这个事件做出响应。</p>
+<p>创建观察者最直接的方法就是在 <code>Observable</code> 的 <code>subscribe</code> 方法后面描述，事件发生时，需要如何做出响应。而观察者就是由后面的 <code>onNext</code>，<code>onError</code>，<code>onCompleted</code>的这些闭包构建出来的，上面和下面的例子都可以看出，我们在<code>subscribe</code>里进行的打印或者弹框操作都是观察者。</p>
+<h4 id="3-Observable-amp-Observer"><a href="#3-Observable-amp-Observer" class="headerlink" title="3. Observable &amp; Observer"></a>3. Observable &amp; Observer</h4><p>在我们所遇到的事物中，有一部分非常特别。它们既是<strong>可监听序列</strong>也是<strong>观察者</strong>。 </p>
+<h5 id="A-系统的控件"><a href="#A-系统的控件" class="headerlink" title="A. 系统的控件"></a>A. 系统的控件</h5><p>例如：<code>textField</code>的当前文本。它可以看成是由用户输入，而产生的一个<strong>文本序列</strong>。也可以是由外部文本序列，来控制当前显示内容的<strong>观察者</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 作为可监听序列</span></div><div class="line"> nameTF.rx.text.orEmpty.asObservable()</div><div class="line">         .subscribe(onNext:&#123;</div><div class="line">             <span class="built_in">print</span>($<span class="number">0</span>)</div><div class="line">         &#125;)</div><div class="line">         .disposed(by: disposeBag)</div><div class="line"> </div><div class="line"> <span class="comment">// 作为观察者</span></div><div class="line"> <span class="keyword">let</span> tfInput = pswTF.rx.text.orEmpty.asDriver()</div><div class="line"> tfInput.drive(nameTF.rx.text)</div><div class="line">      .disposed(by: disposeBag)</div></pre></td></tr></table></figure>
+<p>还有<code>switch</code>的开关状态，<code>segmentedControl</code>的选中索引号，<code>datePicker</code>的选中日期等。</p>
+<h5 id="B-框架里的Subject类"><a href="#B-框架里的Subject类" class="headerlink" title="B. 框架里的Subject类"></a>B. 框架里的Subject类</h5><p>还有一种subjects，是Observable的子类，相对于Observable，subject使用起来更加灵活，它既可以作为订阅者，也可以作为观测序列，因而能够多次订阅以及发送新的事件,下面介绍几种subjects：</p>
+<ul>
+<li>PublishSubject：将对观察者发送订阅后产生的元素，而在订阅前发出的元素将不会发送给观察者</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">let</span> subject = <span class="type">PublishSubject</span>&lt;<span class="type">String</span>&gt;()</div><div class="line"></div><div class="line">subject.subscribe &#123; <span class="built_in">print</span>(<span class="string">"先订阅的事件:"</span>, $<span class="number">0</span>) &#125;</div><div class="line">        .disposed(by: disposeBag)</div><div class="line"></div><div class="line">subject.onNext(<span class="string">"1️⃣"</span>)</div><div class="line">subject.onNext(<span class="string">"2️⃣"</span>)</div><div class="line"></div><div class="line">subject.subscribe &#123; <span class="built_in">print</span>(<span class="string">"- 后订阅的事件:"</span>, $<span class="number">0</span>) &#125;</div><div class="line">       .disposed(by: disposeBag)</div><div class="line"></div><div class="line">subject.onNext(<span class="string">"🅰️"</span>)</div><div class="line">subject.onNext(<span class="string">"🅱️"</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>ReplaySubject：对观察者发送全部的元素，无论观察者是何时进行订阅的</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">let</span> subject = <span class="type">ReplaySubject</span>&lt;<span class="type">String</span>&gt;.create(bufferSize: <span class="number">2</span>)</div><div class="line"></div><div class="line">subject.subscribe &#123; <span class="built_in">print</span>(<span class="string">"先订阅的事件:"</span>, $<span class="number">0</span>) &#125;</div><div class="line">        .disposed(by: disposeBag)</div><div class="line"></div><div class="line">subject.onNext(<span class="string">"1️⃣"</span>)</div><div class="line">subject.onNext(<span class="string">"2️⃣"</span>)</div><div class="line"></div><div class="line">subject.subscribe &#123; <span class="built_in">print</span>(<span class="string">"- 后订阅的事件:"</span>, $<span class="number">0</span>) &#125;</div><div class="line">       .disposed(by: disposeBag)</div><div class="line"></div><div class="line">subject.onNext(<span class="string">"🅰️"</span>)</div><div class="line">subject.onNext(<span class="string">"🅱️"</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>BehaviorSubject：向所有订阅者广播事件，向最新的订阅者发送最新事件</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">let</span> subject = <span class="type">BehaviorSubject</span>(value: <span class="string">"🔴"</span>)</div><div class="line"></div><div class="line">subject.subscribe &#123; <span class="built_in">print</span>(<span class="string">"订阅者1: "</span>, $<span class="number">0</span>) &#125;</div><div class="line">        .disposed(by: disposeBag)</div><div class="line"></div><div class="line">subject.onNext(<span class="string">"1️⃣"</span>)</div><div class="line">subject.onNext(<span class="string">"2️⃣"</span>)</div><div class="line"></div><div class="line">subject.subscribe &#123; <span class="built_in">print</span>(<span class="string">"-订阅者2: "</span>, $<span class="number">0</span>) &#125;</div><div class="line">        .disposed(by: disposeBag)</div><div class="line"></div><div class="line">subject.onNext(<span class="string">"🅰️"</span>)</div><div class="line">subject.onNext(<span class="string">"🅱️"</span>)</div><div class="line"></div><div class="line">subject.subscribe &#123; <span class="built_in">print</span>(<span class="string">"--订阅者3: "</span>, $<span class="number">0</span>) &#125;</div><div class="line">       .disposed(by: disposeBag)</div><div class="line"></div><div class="line">subject.onNext(<span class="string">"🍐"</span>)</div><div class="line">subject.onNext(<span class="string">"🍊"</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>AsyncSubject：将对观察者发送订阅后产生的最后一个元素</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">let</span> subject = <span class="type">AsyncSubject</span>&lt;<span class="type">String</span>&gt;()</div><div class="line"></div><div class="line">subject.subscribe &#123; <span class="built_in">print</span>(<span class="string">"订阅事件:"</span>, $<span class="number">0</span>) &#125;</div><div class="line">        .disposed(by: disposeBag)</div><div class="line"></div><div class="line">subject.onNext(<span class="string">"🅰️"</span>)</div><div class="line">subject.onNext(<span class="string">"🅱️"</span>)</div><div class="line">subject.onNext(<span class="string">"🅾️"</span>)</div><div class="line">subject.onCompleted()</div></pre></td></tr></table></figure>
+<h4 id="4-Operator"><a href="#4-Operator" class="headerlink" title="4. Operator"></a>4. Operator</h4><p>操作符可以创建新的序列，或者变化组合原有的序列，从而生成一个新的序列，里面的操作符和RAC还有SwiftUI中的Combin都很类似。如果有了解过理解起来就很简单，下面简单介绍下：</p>
+<ul>
+<li>map: 转换</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="type">Observable</span>.of(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</div><div class="line">    .<span class="built_in">map</span> &#123; $<span class="number">0</span> * <span class="number">10</span> &#125;</div><div class="line">    .subscribe(onNext: &#123; <span class="built_in">print</span>($<span class="number">0</span>) &#125;)</div><div class="line">    .disposed(by: disposeBag)</div></pre></td></tr></table></figure>
+<ul>
+<li>filter: 过滤</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="type">Observable</span>.of(</div><div class="line">    <span class="string">"🐱"</span>, <span class="string">"🐰"</span>, <span class="string">"🐶"</span>,</div><div class="line">    <span class="string">"🐸"</span>, <span class="string">"🐱"</span>, <span class="string">"🐰"</span>,</div><div class="line">    <span class="string">"🐹"</span>, <span class="string">"🐸"</span>, <span class="string">"🐱"</span>)</div><div class="line">    .<span class="built_in">filter</span> &#123;</div><div class="line">        $<span class="number">0</span> == <span class="string">"🐱"</span></div><div class="line">    &#125;</div><div class="line">    .subscribe(onNext: &#123; <span class="built_in">print</span>($<span class="number">0</span>) &#125;)</div><div class="line">    .disposed(by: disposeBag)</div></pre></td></tr></table></figure>
+<ul>
+<li>startWith: 在一个订阅者订阅信号之前先“接收”一个信号</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> subject = <span class="type">PublishSubject</span>&lt;<span class="type">String</span>&gt;()</div><div class="line"><span class="comment">//订阅信号之前先接收到first信号</span></div><div class="line">subject.startWith(<span class="string">"⭕️"</span>)</div><div class="line">    .subscribe &#123; (event) <span class="keyword">in</span></div><div class="line">        <span class="built_in">print</span>(event.element!)</div><div class="line">        &#125;.disposed(by: disposeBag)</div><div class="line">subject.onNext(<span class="string">"1️⃣"</span>)</div><div class="line">subject.onNext(<span class="string">"2️⃣"</span>)</div><div class="line"></div><div class="line">subject.startWith(<span class="string">"C"</span>)</div><div class="line">        .startWith(<span class="string">"B"</span>)</div><div class="line">        .startWith(<span class="string">"A"</span>)</div><div class="line">        .subscribe &#123; (event) <span class="keyword">in</span></div><div class="line">        <span class="built_in">print</span>(event.element!)</div><div class="line">        &#125;.disposed(by: disposeBag)</div></pre></td></tr></table></figure>
+<ul>
+<li>merge: 将两个可观测序列合并为一个可观测序列，这一订阅者可以收到任一者发出的事件</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">let</span> subject1 = <span class="type">PublishSubject</span>&lt;<span class="type">String</span>&gt;()</div><div class="line"><span class="keyword">let</span> subject2 = <span class="type">PublishSubject</span>&lt;<span class="type">String</span>&gt;()</div><div class="line"></div><div class="line"><span class="keyword">let</span> mergeSubject = <span class="type">Observable</span>.of(subject1, subject2).merge()</div><div class="line">mergeSubject.subscribe(&#123; (event) <span class="keyword">in</span></div><div class="line">        <span class="built_in">print</span>(event.element!)</div><div class="line">    &#125;).disposed(by: disposeBag)</div><div class="line"><span class="comment">//发送事件</span></div><div class="line">subject1.onNext(<span class="string">"🐶"</span>)</div><div class="line">subject2.onNext(<span class="string">"🐱"</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>zip:将两个或多个（最多八个）可观测序列进行绑定</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 创建两个被绑定subject</span></div><div class="line"><span class="keyword">let</span> stringSubject = <span class="type">PublishSubject</span>&lt;<span class="type">String</span>&gt;()</div><div class="line"><span class="keyword">let</span> intSubject = <span class="type">PublishSubject</span>&lt;<span class="type">Int</span>&gt;()</div><div class="line"><span class="comment">// 创建绑定subject</span></div><div class="line"><span class="keyword">let</span> zipSubject = <span class="type">Observable</span>.<span class="built_in">zip</span>(stringSubject, intSubject)</div><div class="line">zipSubject.subscribe(&#123; (event) <span class="keyword">in</span></div><div class="line">    <span class="built_in">print</span>(event.element!)</div><div class="line">    &#125;).disposed(by: disposeBag)</div><div class="line"><span class="comment">// 发送事件</span></div><div class="line">stringSubject.onNext(<span class="string">"️hello-1"</span>)</div><div class="line">stringSubject.onNext(<span class="string">"️hello-2"</span>)</div><div class="line">intSubject.onNext(<span class="number">1</span>)</div><div class="line">intSubject.onNext(<span class="number">2</span>)</div><div class="line">stringSubject.onNext(<span class="string">"hello-3"</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>take: 发送指定数量的事件</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="type">Observable</span>.of(<span class="string">"🐱"</span>, <span class="string">"🐰"</span>, <span class="string">"🐶"</span>, <span class="string">"🐸"</span>, <span class="string">"🐷"</span>, <span class="string">"🐵"</span>)</div><div class="line">        .take(<span class="number">3</span>)</div><div class="line">        .subscribe(onNext: &#123; <span class="built_in">print</span>($<span class="number">0</span>) &#125;)</div><div class="line">        .disposed(by: disposeBag)</div></pre></td></tr></table></figure>
+<ul>
+<li>takeLast: 从后往前发送指定数量的事件</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="type">Observable</span>.of(<span class="string">"🐱"</span>, <span class="string">"🐰"</span>, <span class="string">"🐶"</span>, <span class="string">"🐸"</span>, <span class="string">"🐷"</span>, <span class="string">"🐵"</span>)</div><div class="line">        .takeLast(<span class="number">3</span>)</div><div class="line">        .subscribe(onNext: &#123; <span class="built_in">print</span>($<span class="number">0</span>) &#125;)</div><div class="line">        .disposed(by: disposeBag)</div></pre></td></tr></table></figure>
+<ul>
+<li>take…while: 添加条件</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="type">Observable</span>.of(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>)</div><div class="line">    .take(<span class="keyword">while</span>: &#123;$<span class="number">0</span> &lt; <span class="number">4</span>&#125; )</div><div class="line">        .subscribe(onNext: &#123; <span class="built_in">print</span>($<span class="number">0</span>) &#125;)</div><div class="line">        .disposed(by: disposeBag)</div></pre></td></tr></table></figure>
+<ul>
+<li>untilSequence:和另一个观测序列进行关联，当另一个观测序列发送第一个事件后，订阅者接收之前的事件并结束，对以后发送的事件不进行处理</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> sourceSequence = <span class="type">PublishSubject</span>&lt;<span class="type">String</span>&gt;()</div><div class="line"><span class="keyword">let</span> untilSequence = <span class="type">PublishSubject</span>&lt;<span class="type">String</span>&gt;()</div><div class="line">sourceSequence</div><div class="line">    .take(until: untilSequence)</div><div class="line">    .subscribe &#123; <span class="built_in">print</span>($<span class="number">0</span>) &#125;</div><div class="line">    .disposed(by: disposeBag)</div><div class="line"></div><div class="line">sourceSequence.onNext(<span class="string">"🐱"</span>)</div><div class="line">sourceSequence.onNext(<span class="string">"🐰"</span>)</div><div class="line">sourceSequence.onNext(<span class="string">"🐶"</span>)</div><div class="line">untilSequence.onNext(<span class="string">"🔴"</span>)</div><div class="line">sourceSequence.onNext(<span class="string">"🐸"</span>)</div><div class="line">sourceSequence.onNext(<span class="string">"🐷"</span>)</div><div class="line">sourceSequence.onNext(<span class="string">"🐵"</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>skip: 从1开始，跳过指定的事件</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="type">Observable</span>.of(<span class="string">"🐱"</span>, <span class="string">"🐰"</span>, <span class="string">"🐶"</span>, <span class="string">"🐸"</span>, <span class="string">"🐷"</span>, <span class="string">"🐵"</span>)</div><div class="line">        .skip(<span class="number">2</span>)</div><div class="line">        .subscribe(onNext: &#123; <span class="built_in">print</span>($<span class="number">0</span>) &#125;)</div><div class="line">        .disposed(by: disposeBag)</div></pre></td></tr></table></figure>
+<ul>
+<li>distinctUntilChanged： 当接收到的事件与之前的事件相同时，不执行订阅操作</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="type">Observable</span>.of(<span class="string">"🐱"</span>, <span class="string">"🐶"</span>, <span class="string">"🐱"</span>, <span class="string">"🐱"</span>, <span class="string">"🐱"</span>, <span class="string">"🐵"</span>, <span class="string">"🐱"</span>)</div><div class="line">    .distinctUntilChanged()</div><div class="line">    .subscribe(onNext: &#123; <span class="built_in">print</span>($<span class="number">0</span>) &#125;)</div><div class="line">    .disposed(by: disposeBag)</div></pre></td></tr></table></figure>
+<ul>
+<li>single：只产生一个事件</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">    <span class="comment">//不带条件的single，返回接收到的第一个事件</span></div><div class="line">    <span class="type">Observable</span>.of(<span class="string">"🐱"</span>, <span class="string">"🐰"</span>, <span class="string">"🐶"</span>, <span class="string">"🐸"</span>, <span class="string">"🐷"</span>, <span class="string">"🐵"</span>)</div><div class="line">            .single()</div><div class="line">            .subscribe(onNext: &#123; <span class="built_in">print</span>($<span class="number">0</span>) &#125;)</div><div class="line">            .disposed(by: disposeBag)</div><div class="line">    </div><div class="line">    <span class="comment">//返回满足条件的事件，当所有事件均不满足条件是，返回error</span></div><div class="line">    <span class="type">Observable</span>.of(<span class="string">"🐱"</span>, <span class="string">"🐰"</span>, <span class="string">"🐶"</span>, <span class="string">"🐸"</span>, <span class="string">"🐷"</span>, <span class="string">"🐵"</span>)</div><div class="line">            .single &#123; $<span class="number">0</span> == <span class="string">"🐸"</span> &#125;</div><div class="line">            .subscribe &#123; <span class="built_in">print</span>($<span class="number">0</span>) &#125;</div><div class="line">            .disposed(by: disposeBag)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>element：执行指定位置的事件</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="type">Observable</span>.of(<span class="string">"🐱"</span>, <span class="string">"🐰"</span>, <span class="string">"🐶"</span>, <span class="string">"🐸"</span>, <span class="string">"🐷"</span>, <span class="string">"🐵"</span>)</div><div class="line">    .element(at: <span class="number">3</span>)</div><div class="line">    .subscribe(onNext: &#123; <span class="built_in">print</span>($<span class="number">0</span>) &#125;)</div><div class="line">    .disposed(by: disposeBag)</div></pre></td></tr></table></figure>
+<h4 id="5-Disposable"><a href="#5-Disposable" class="headerlink" title="5. Disposable"></a>5. Disposable</h4><p><code>disposable</code>  简单来说就是提前取消订阅或者释放资源，需要手动调用<code>dispose</code>方法</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">disposableDemo</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">let</span> sub = <span class="type">PublishSubject</span>&lt;<span class="type">Any</span>&gt;()</div><div class="line">    <span class="keyword">let</span> dispose = sub.subscribe(onNext: &#123; (value) <span class="keyword">in</span></div><div class="line">        <span class="built_in">print</span>(<span class="string">"disposableDemo value:<span class="subst">\(value)</span>"</span>)</div><div class="line">    &#125;)</div><div class="line">    sub.onNext(<span class="string">"🅰️"</span>)</div><div class="line">    dispose.dispose()  <span class="comment">//此处调用onCompleted、onError作用相同</span></div><div class="line">    sub.onNext(<span class="string">"🅱️"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一般情况下我们更多的使用的是<code>DisposeBag</code>,<code>DisposeBag</code>是一个<code>Bag</code>类型的数据结构，里面存放<code>Disposable</code>的数据。</p>
+<p>每次看到Disposable类型调用<code>disposed(by: disposeBag)</code>，其实是将Disposable放在DisposeBag中进行管理，当DisposeBag进行dispose时，对其中管理的Disposable分别dispose，但是DisposeBag不能主动调用，只能在deinit时自动释放，所以想要进行dispose操作，只能将disposeBag重新赋值，比如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">var</span> disposeBag = <span class="type">DisposeBag</span>()</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">disposeBagDemo</span><span class="params">()</span></span>&#123;</div><div class="line">      <span class="keyword">let</span> sub = <span class="type">PublishSubject</span>&lt;<span class="type">Any</span>&gt;()</div><div class="line">      sub.subscribe(onNext: &#123; (val) <span class="keyword">in</span></div><div class="line">          <span class="built_in">print</span>(<span class="string">"disposeBagDemo value:<span class="subst">\(val)</span>"</span>)</div><div class="line">      &#125;).disposed(by: disposeBag)</div><div class="line">      sub.onNext(<span class="string">"🅰️"</span>)</div><div class="line">      sub.onNext(<span class="string">"🅱️"</span>)</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h4 id="6-Schedulers"><a href="#6-Schedulers" class="headerlink" title="6. Schedulers"></a>6. Schedulers</h4><ul>
+<li>MainScheduler： 代表主线程。如果你需要执行一些和 UI 相关的任务，就需要切换到该 Scheduler 运行。</li>
+<li>SerialDispatchQueueScheduler： 抽象了串行 DispatchQueue。如果你需要执行一些串行任务，可以切换到这个 Scheduler 运行。</li>
+<li>ConcurrentDispatchQueueScheduler 抽象了并行 DispatchQueue。如果你需要执行一些并发任务，可以切换到这个 Scheduler 运行。</li>
+<li>OperationQueueScheduler ：抽象了 NSOperationQueue。它具备 NSOperationQueue 的一些特点，例如，你可以通过设置 maxConcurrentOperationCount，来控制同时执行并发任务的最大数量。</li>
+</ul>
+<p>一个示例：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">schedulers</span> <span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">let</span> obj = <span class="type">Observable</span>&lt;<span class="type">Int</span>&gt;.create &#123; (oberver) -&gt; <span class="type">Disposable</span> <span class="keyword">in</span></div><div class="line">        <span class="keyword">var</span> total = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> index <span class="keyword">in</span> <span class="number">1</span>...<span class="number">10</span>&#123;</div><div class="line">            total += index</div><div class="line">        &#125;</div><div class="line">        oberver.onNext(total)</div><div class="line">        <span class="keyword">return</span> <span class="type">Disposables</span>.create()</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// subscribeOn 切到后台去发送请求并解析数据，最后用 observeOn 切换到主线程更新页面。</span></div><div class="line">    obj.subscribe(on: <span class="type">ConcurrentDispatchQueueScheduler</span>(qos: .userInitiated))<span class="comment">//选择一个并行队列</span></div><div class="line">        .observe(on: <span class="type">MainScheduler</span>.instance)<span class="comment">//设置观察者在主线程上</span></div><div class="line">        .subscribe(onNext: &#123; (val) <span class="keyword">in</span></div><div class="line">            <span class="built_in">print</span>(val)</div><div class="line">        &#125;).disposed(by: disposeBag)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>subscribeOn: 决定数据序列的构建函数在哪个 <strong>Scheduler</strong> 上运行。</li>
+<li>observeOn: 决定在哪个 <strong>Scheduler</strong> 监听这个数据序列</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/21/leak/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">安卓内存泄漏检测及原因分析</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'chaoxn'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+</div>
+      <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2021 潮汐
+    	</div>
+<span id="busuanzi_container_site_pv">
+    您是第<span id="busuanzi_value_site_pv"></span>位访客
+</span>
+      	<div class="footer-right">
+      		<a>ChaoX</a>
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
